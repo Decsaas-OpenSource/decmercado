@@ -7,15 +7,15 @@ import { Excluir } from "@/app/icons"
 import { Listagem } from "./Listagem"
 
 interface ListagemLinhaBotaoExcluirProp {
-    item: any, //TODO: tipar
+    item: ListagemDTO,
 }
 
 export default function ListagemLinhaBotaoExcluir(prop: ListagemLinhaBotaoExcluirProp) {
 
     const [exibirModal, setExibirModal] = useState(false)
-    const [objetoParaExcluir, setObjetoParaExcluir] = useState<any>()
+    const [objetoParaExcluir, setObjetoParaExcluir] = useState<ListagemDTO>()
 
-    const abrirModal = (objetoExcluir: any) => {
+    const abrirModal = (objetoExcluir: ListagemDTO) => {
         setExibirModal(true)
         setObjetoParaExcluir(objetoExcluir)
     }

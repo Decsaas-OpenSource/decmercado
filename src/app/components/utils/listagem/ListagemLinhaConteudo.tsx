@@ -1,8 +1,8 @@
 import Produto from "@/app/model/Produto"
 
 interface ListagemLinhaConteudoProp {
-    item: Produto,
-    children: React.ReactNode
+    item: ListagemDTO,
+    children?: React.ReactNode
 }
 
 export default function ListagemLinhaConteudo(prop: ListagemLinhaConteudoProp) {
