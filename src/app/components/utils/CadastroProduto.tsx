@@ -10,7 +10,7 @@ import ProdutoNullObject from "@/app/model/nullObject/ProdutoNullObject";
 
 interface ProdutoCadastroProp {
     exibir: boolean;
-    produto?: Produto
+    produto: Produto
     onClose: () => void
     clickConfirmar: (produto:Produto) => void
 }
@@ -20,7 +20,7 @@ export default function CadastroProduto(prop: ProdutoCadastroProp) {
     const [nome, setNome] = useState("")
     const [comentario, setComentario] = useState("")
     const [quantidade, setQuantidade] = useState(1.000)
-    const [produto, setProduto] = useState<Produto>() 
+    const [produto, setProduto] = useState<Produto>(prop.produto) 
 
     useEffect(() => {
         setProduto(prop.produto)
@@ -75,7 +75,8 @@ export default function CadastroProduto(prop: ProdutoCadastroProp) {
                     color="bg-neutro-400"
                     css="text-branco"
                     onClick={() => {
-                        prop.clickConfirmar(new ProdutoNullObject())
+                        const p = new Produto(produto.id, quantidade, nome, comentario)
+                        prop.clickConfirmar(p)
                         prop.onClose()
                     }} />
             </div>

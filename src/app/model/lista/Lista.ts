@@ -39,19 +39,6 @@ export default abstract class Lista implements ListagemDTO {
         return 0
     }
 
-    adicionarProduto(p: Produto): Lista { 
-        const novaInstancia = this.removerProduto(p)
-        novaInstancia.produtos.push(p)
-        return novaInstancia
-    }
-
-    removerProduto(p: Produto): Lista {
-        const novaInstancia = this.instanciarNovoObjeto<Lista>(this.#id, this.#descricao)
-        novaInstancia.produtos = this.produtos
-        novaInstancia.produtos = novaInstancia.produtos.filter((produto) => produto.id != p.id)
-        return novaInstancia
-    }
-
     toJSON() {
         return {
             id: this.#id,
@@ -60,11 +47,11 @@ export default abstract class Lista implements ListagemDTO {
         }
     }
 
-    static fromJSON(listaParaConversao: Lista): Lista {
-        listaParaConversao.produtos = listaParaConversao.produtos.map((p: Produto) => {
+    static fromJSON(novaInstancia :Lista, listaParaConversao: Lista): Lista {
+        novaInstancia.produtos = listaParaConversao.produtos.map((p: Produto) => {
             return Produto.fromJSON(JSON.parse(p.toString()))
         })
-        return listaParaConversao
+        return novaInstancia
     }
 
     abstract instanciarNovoObjeto<T>(id: string, descricao : string) : T
