@@ -2,7 +2,6 @@ import Body from "@/app/components/template/Body"
 import { Footer } from "@/app/components/template/footer/Footer"
 import { Header } from "@/app/components/template/header/Header"
 
-
 const urlBase = "/app/listas/"
 
 export default function Listas() {
