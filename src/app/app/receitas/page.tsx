@@ -43,7 +43,7 @@ export default function MinhasReceitas() {
                                     corPrimaria="bg-primario-100"
                                     corSecundaria="bg-primario-200">
 
-                                    <Listagem.LinhaRedirection item={item} urlBase={`/app/listas/${item.id}`} >
+                                    <Listagem.LinhaRedirection item={item} urlBase={`/app/receitas/${item.id}`} >
                                         <Listagem.LinhaConteudo item={item} />
                                     </Listagem.LinhaRedirection>
 
