@@ -29,7 +29,7 @@ export default function MinhasReceitas() {
 
             <Body css="text-secundario-500">
                 <Listagem.Root
-                    mensagemVazio="Nenhum item adicionado"
+                    mensagemVazio="Nenhuma receita criada"
                     exibirListagem={lista.length > 0}>
                     {
                         lista.map((item, i) => {

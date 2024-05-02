@@ -30,7 +30,7 @@ export default function MinhasListas() {
 
             <Body css="text-primario-500">
                 <Listagem.Root
-                    mensagemVazio="Nenhum item adicionado"
+                    mensagemVazio="Nenhuma lista criada"
                     exibirListagem={listas.length > 0}>
                     {
                         listas.map((item, i) => {

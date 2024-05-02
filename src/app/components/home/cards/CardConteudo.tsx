@@ -6,7 +6,7 @@ interface CardConteudoCarrinhoProd {
 
 export function CardConteudoCarrinho(prop: CardConteudoCarrinhoProd) {
 
-    const mensagemComStatus = prop.totalNoCarrinho > 0 && prop.totalParaComprar > 0
+    const mensagemComStatus = prop.totalNoCarrinho > 0 || prop.totalParaComprar > 0
 
     const mensagemTotalNoCarrinho = mensagemComStatus ?
         `Itens no carrinho (${prop.totalNoCarrinho})` :

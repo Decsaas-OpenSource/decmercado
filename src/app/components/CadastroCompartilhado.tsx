@@ -14,10 +14,15 @@ import CadastroProduto from "./utils/CadastroProduto";
 import Dados from "../storage/local/Dados";
 import Lista from "../model/lista/Lista";
 import { DivisorSomenteTexto } from "./utils/Divisor";
+import { Remover } from "../icons";
+import { BotaoComIcone } from "./utils/Botao";
+import { Modal } from "./utils/modal/Modal";
+import { useRouter } from "next/navigation";
 
 interface CadastroCompartilhadoProp {
     storage: [Dados<Lista>, Dispatch<SetStateAction<Dados<Lista>>>];
     lista: [Lista, Dispatch<SetStateAction<Lista>>];
+    urlOrigem: string
 }
 
 export default function CadastroCompartilhado(prop: CadastroCompartilhadoProp) {
@@ -32,6 +37,10 @@ export default function CadastroCompartilhado(prop: CadastroCompartilhadoProp) {
 
     const [storage] = prop.storage
     const [lista, setLista] = prop.lista
+
+    const [exibirModal, setExibirModal] = useState(false)
+
+    const router = useRouter()
 
     useEffect(() => {
         storage.carregar()
@@ -54,6 +63,13 @@ export default function CadastroCompartilhado(prop: CadastroCompartilhadoProp) {
                 <Header.Conteudo>
                     <Header.Titulo valor={nome}></Header.Titulo>
                 </Header.Conteudo>
+                <Header.Botao>
+                    <BotaoComIcone
+                        icon={Remover} css="text-perigo-300"
+                        onClick={() => {
+                            setExibirModal(true)
+                        }} />
+                </Header.Botao>
             </Header.Root>
 
             <Body css="text-primario-500">
@@ -69,7 +85,7 @@ export default function CadastroCompartilhado(prop: CadastroCompartilhadoProp) {
                     tamanhoMaximo={20}
                 />
 
-                <DivisorSomenteTexto texto="Itens"/>
+                <DivisorSomenteTexto texto="Itens" />
 
                 <Listagem.Root
                     mensagemVazio="Nenhum item adicionado"
@@ -85,7 +101,7 @@ export default function CadastroCompartilhado(prop: CadastroCompartilhadoProp) {
                                     corSecundaria="bg-primario-200">
 
                                     <Listagem.LinhaOnClick item={item} onClick={(e) => editarProduto(item)}>
-                                        <Listagem.LinhaConteudo item={item}>
+                                        <Listagem.LinhaConteudo item={item} comDecimais>
                                             <Listagem.LinhaComentario comentario={item.comentario} />
                                         </Listagem.LinhaConteudo>
                                     </Listagem.LinhaOnClick>
@@ -104,20 +120,6 @@ export default function CadastroCompartilhado(prop: CadastroCompartilhadoProp) {
                     }
                 </Listagem.Root>
 
-                <CadastroProduto
-                    exibir={exibirProduto}
-                    produto={produtoParaEdicao}
-                    onClose={() => {
-                        setExibirProduto(false)
-                    }}
-                    clickConfirmar={(produto) => {
-                        const produtosFiltrados = produtos.filter((p) => p.id != produto.id)
-                        const produtosNovos = [...produtosFiltrados, produto]
-                        setProdutos(produtosNovos)
-                        lista.produtos = produtosNovos
-                        storage.salvar(lista)
-                    }} />
-
             </Body>
 
             <Footer.Root>
@@ -128,6 +130,31 @@ export default function CadastroCompartilhado(prop: CadastroCompartilhadoProp) {
                     }} />
                 <Footer.Menu focoHome />
             </Footer.Root>
+
+            <CadastroProduto
+                exibir={exibirProduto}
+                produto={produtoParaEdicao}
+                onClose={() => {
+                    setExibirProduto(false)
+                }}
+                clickConfirmar={(produto) => {
+                    const produtosFiltrados = produtos.filter((p) => p.id != produto.id)
+                    const produtosNovos = [...produtosFiltrados, produto]
+                    setProdutos(produtosNovos)
+                    lista.produtos = produtosNovos
+                    storage.salvar(lista)
+                }} />
+
+            <Modal.Root exibir={exibirModal} titulo="Atenção" >
+                <Modal.Mensagem mensagem="Deseja realmente excluir?" />
+                <Modal.Botoes>
+                    <Modal.BotaoNao valor="Cancelar" onClick={() => setExibirModal(false)} />
+                    <Modal.BotaoSim valor="Confirmar" onClick={() => {
+                        storage.deletar(lista)
+                        router.push(prop.urlOrigem)
+                    }} />
+                </Modal.Botoes>
+            </Modal.Root>
         </>
 
 

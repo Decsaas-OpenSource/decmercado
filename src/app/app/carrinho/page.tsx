@@ -41,15 +41,15 @@ export default function MeuCarrinho() {
     }
 
     function tituloDoCarrinho() {
-        if (produtosNoCarrinho.length == 0 )
-            return "Vazio" 
+        if (produtosNoCarrinho.length == 0)
+            return "Vazio"
 
         return produtosNoCarrinho.length
     }
 
     function tituloParaComprar() {
-        if (produtosParaComprar.length == 0 )
-            return "Nenhum" 
+        if (produtosParaComprar.length == 0)
+            return "Nenhum"
 
         return produtosParaComprar.length
     }
@@ -86,7 +86,7 @@ export default function MeuCarrinho() {
                                     corSecundaria="bg-primario-200">
 
                                     <Listagem.LinhaSemAcao >
-                                        <Listagem.LinhaConteudo item={item} />
+                                        <Listagem.LinhaConteudo item={item} comDecimais />
                                     </Listagem.LinhaSemAcao>
 
                                     <Listagem.ListaBotaoCheck selecionado onClick={() => {
@@ -118,7 +118,7 @@ export default function MeuCarrinho() {
                                     corSecundaria="bg-primario-200">
 
                                     <Listagem.LinhaSemAcao>
-                                        <Listagem.LinhaConteudo item={item} />
+                                        <Listagem.LinhaConteudo item={item} comDecimais />
                                     </Listagem.LinhaSemAcao>
 
                                     <Listagem.ListaBotaoCheck onClick={() => {
