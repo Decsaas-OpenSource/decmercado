@@ -18,23 +18,6 @@ export default function ListagemLinha(prop: ListagemLinhaProp) {
     if (prop.ultimo)
         cssDinamico = cssDinamico.concat(" rounded-b-md")
 
-
-    // const criarLinhas = () => {
-    //     var cssDinamico = (i % 2 == 0) ? prop.corPrimaria : prop.corSecundaria
-
-    //     if (i === 0)
-    //         cssDinamico = cssDinamico.concat(" rounded-t-md")
-
-    //     if (prop.ultimo)
-    //         cssDinamico = cssDinamico.concat(" rounded-b-md")
-
-    //     return (
-    //         <div className={`flex space-x-3 h-[66px] pr-2 mb-2 ${cssDinamico} justify-between`}>
-    //             {prop.children}
-    //         </div>
-    //     )
-    // }
-
     return (
         <div className={`flex space-x-3 h-[66px] pr-2 mb-2 ${cssDinamico} justify-between`}>
             {prop.children}

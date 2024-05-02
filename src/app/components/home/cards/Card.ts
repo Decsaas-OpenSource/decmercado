@@ -1,6 +1,6 @@
 import { CardBodyMinhasListas, CardBodyMeuCarrinho, CardBodyMinhasReceitas } from "./CardBody";
 import { CardConteudoCarrinho, CardConteudoLista, CardConteudoReceita } from "./CardConteudo";
-import CardIcone from "./CardIcone";
+import { CardIconeCarrinho, CardIconeLista, CardIconeReceita } from "./CardIcone";
 import CardRoot from "./CardRoot";
 
 export const Card = {
@@ -11,5 +11,7 @@ export const Card = {
     ConteudoCarrinho: CardConteudoCarrinho,
     ConteudoLista: CardConteudoLista,
     ConteudoReceita: CardConteudoReceita,
-    Icone : CardIcone,
+    IconeCarrinho : CardIconeCarrinho,
+    IconeLista : CardIconeLista,
+    IconeReceita : CardIconeReceita,
 }

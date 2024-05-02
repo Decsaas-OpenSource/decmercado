@@ -15,10 +15,9 @@ import Dados from "../storage/local/Dados";
 import Lista from "../model/lista/Lista";
 
 interface CadastroCompartilhadoProp {
-    storage:[Dados<any>, Dispatch<SetStateAction<Dados<any>>>];
+    storage: [Dados<Lista>, Dispatch<SetStateAction<Dados<Lista>>>];
     lista: [Lista, Dispatch<SetStateAction<Lista>>];
 }
-
 
 export default function CadastroCompartilhado(prop: CadastroCompartilhadoProp) {
 
@@ -63,7 +62,7 @@ export default function CadastroCompartilhado(prop: CadastroCompartilhadoProp) {
                     valor={nome}
                     onChange={(e) => {
                         setNome(e)
-                        lista.descricao = nome
+                        lista.descricao = e
                         storage.salvar(lista)
                     }}
                     tamanhoMaximo={20}
@@ -86,13 +85,20 @@ export default function CadastroCompartilhado(prop: CadastroCompartilhadoProp) {
                                     corPrimaria="bg-primario-100"
                                     corSecundaria="bg-primario-200">
 
-                                    <Listagem.LinhaOnClick item={item} onClick={(e) => alert(item)}>
+                                    <Listagem.LinhaOnClick item={item} onClick={(e) => editarProduto(item)}>
                                         <Listagem.LinhaConteudo item={item}>
                                             <Listagem.LinhaComentario comentario={item.comentario} />
                                         </Listagem.LinhaConteudo>
                                     </Listagem.LinhaOnClick>
 
-                                    <Listagem.ListaBotaoExcluir item={item}></Listagem.ListaBotaoExcluir>
+                                    <Listagem.ListaBotaoExcluir item={item}
+                                        onClickSim={(produto) => {
+                                            const produtosFiltrado = produtos.filter((p) => p.id != produto.id)
+                                            setProdutos(produtosFiltrado)
+                                            lista.produtos = produtosFiltrado
+                                            storage.salvar(lista)
+                                        }}
+                                    />
                                 </Listagem.Linha>
                             )
                         })
@@ -106,8 +112,9 @@ export default function CadastroCompartilhado(prop: CadastroCompartilhadoProp) {
                         setExibirProduto(false)
                     }}
                     clickConfirmar={(produto) => {
-                        setProdutos([...produtos, produto])
-                        lista.produtos = [...produtos, produto]
+                        const produtosNovos = [...produtos, produto]
+                        setProdutos(produtosNovos)
+                        lista.produtos = produtosNovos
                         storage.salvar(lista)
                     }} />
 

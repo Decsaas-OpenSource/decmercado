@@ -4,22 +4,20 @@ import Body from "@/app/components/template/Body"
 import { Footer } from "@/app/components/template/footer/Footer"
 import { Header } from "@/app/components/template/header/Header"
 import { Listagem } from "@/app/components/utils/listagem/Listagem"
+import { URL_BASE_RECEITA } from "@/app/constants"
 import Receita from "@/app/model/lista/Receita"
 import Receitas from "@/app/storage/local/Receitas"
 import { useEffect, useState } from "react"
 
-const urlBase = "/app/receitas/"
-
 export default function MinhasReceitas() {
 
     const [storage] = useState(new Receitas())
-    const [listas, setListas] = useState<Receita[]>([])
+    const [lista, setLista] = useState<Receita[]>([])
 
     useEffect(() => {
         storage.carregar()
-        setListas(storage.todos)
+        setLista(storage.todos)
     }, [storage])
-
 
     return (
         <>
@@ -30,24 +28,28 @@ export default function MinhasReceitas() {
             </Header.Root>
 
             <Body css="text-secundario-500">
-            <Listagem.Root
+                <Listagem.Root
                     mensagemVazio="Nenhum item adicionado"
-                    exibirListagem={listas.length > 0}>
+                    exibirListagem={lista.length > 0}>
                     {
-                        listas.map((item, i) => {
+                        lista.map((item, i) => {
                             return (
                                 <Listagem.Linha
                                     key={item.id}
                                     indice={i}
-                                    ultimo={i == listas.length - 1}
+                                    ultimo={i == lista.length - 1}
                                     corPrimaria="bg-primario-100"
                                     corSecundaria="bg-primario-200">
 
-                                    <Listagem.LinhaRedirection item={item} urlBase={`/app/receitas/${item.id}`} >
+                                    <Listagem.LinhaRedirection item={item} urlBase={`${URL_BASE_RECEITA}${item.id}`} >
                                         <Listagem.LinhaConteudo item={item} />
                                     </Listagem.LinhaRedirection>
 
-                                    <Listagem.ListaBotaoExcluir item={item}></Listagem.ListaBotaoExcluir>
+                                    <Listagem.ListaBotaoExcluir item={item}
+                                        onClickSim={(item: Receita) => {
+                                            storage.deletar(item)
+                                            setLista(storage.todos)
+                                        }} />
                                 </Listagem.Linha>
                             )
                         })
@@ -56,7 +58,7 @@ export default function MinhasReceitas() {
             </Body>
 
             <Footer.Root>
-                <Footer.Botao color="bg-neutro-400" href={`${urlBase}nova`} titulo="Adicionar nova receita"/>
+                <Footer.Botao color="bg-neutro-400" href={`${URL_BASE_RECEITA}nova`} titulo="Adicionar nova receita" />
                 <Footer.Menu focoHome />
             </Footer.Root>
         </>

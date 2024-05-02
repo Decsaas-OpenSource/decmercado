@@ -6,8 +6,7 @@ interface BodyProp {
 export default function Body(prop: BodyProp) {
 
     return (
-        // <div className={`p-[22px] ${pages.menuChildren ? 'pb-[90px]' : 'pb-[60px]'}`}>
-        <div className={`h-svh p-[22px] pb-[60px] ${prop.css}}`}>
+        <div className={`h-screen p-[12px] pb-[60px] ${prop.css}}`}>
             {prop.children}
         </div>
     )

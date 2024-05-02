@@ -8,6 +8,7 @@ import { Listagem } from "./Listagem"
 
 interface ListagemLinhaBotaoExcluirProp {
     item: ListagemDTO,
+    onClickSim(item: ListagemDTO): void
 }
 
 export default function ListagemLinhaBotaoExcluir(prop: ListagemLinhaBotaoExcluirProp) {
@@ -32,6 +33,7 @@ export default function ListagemLinhaBotaoExcluir(prop: ListagemLinhaBotaoExclui
                 }}
                 onClickSim={(e: any) => {
                     setExibirModal(false)
+                    prop.onClickSim(prop.item)
                 }} />
         </>
     )

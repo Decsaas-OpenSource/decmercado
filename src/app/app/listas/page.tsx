@@ -8,8 +8,7 @@ import { useEffect, useState } from "react"
 
 import ListasDeMercado from "@/app/storage/local/ListasDeMercado"
 import ListaDeMercado from "@/app/model/lista/ListaDeMercado"
-
-const urlBase = "/app/listas/"
+import { URL_BASE_LISTA } from "@/app/constants"
 
 export default function MinhasListas() {
 
@@ -43,11 +42,16 @@ export default function MinhasListas() {
                                     corPrimaria="bg-primario-100"
                                     corSecundaria="bg-primario-200">
 
-                                    <Listagem.LinhaRedirection item={item} urlBase={`/app/listas/${item.id}`} >
+                                    <Listagem.LinhaRedirection item={item} urlBase={`${URL_BASE_LISTA}${item.id}`} >
                                         <Listagem.LinhaConteudo item={item} />
                                     </Listagem.LinhaRedirection>
 
-                                    <Listagem.ListaBotaoExcluir item={item}></Listagem.ListaBotaoExcluir>
+                                    <Listagem.ListaBotaoExcluir item={item}
+                                        onClickSim={(item: ListaDeMercado) => {
+                                            storage.deletar(item)
+                                            setListas(storage.todos)
+                                        }}
+                                    />
                                 </Listagem.Linha>
                             )
                         })
@@ -56,7 +60,7 @@ export default function MinhasListas() {
             </Body>
 
             <Footer.Root>
-                <Footer.Botao color="bg-neutro-400" href={`${urlBase}nova`} titulo="Adicionar nova lista" />
+                <Footer.Botao color="bg-neutro-400" href={`${URL_BASE_LISTA}nova`} titulo="Adicionar nova lista" />
                 <Footer.Menu focoHome />
             </Footer.Root>
         </>

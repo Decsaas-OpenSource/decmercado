@@ -19,7 +19,7 @@ interface CardBodyProp {
 export function CardBodyMeuCarrinho(prop: CardBodyProp) {
 
     return (
-        <CardBodyTemplate css="w-full bg-gradient-to-br from-carrinho-000-gradiente via-carrinho-056-gradiente to-carrinho-100-gradiente">
+        <CardBodyTemplate css="w-full p-4 bg-gradient-to-br from-carrinho-000-gradiente via-carrinho-056-gradiente to-carrinho-100-gradiente">
             {prop.children}
         </CardBodyTemplate>
     )
@@ -28,7 +28,7 @@ export function CardBodyMeuCarrinho(prop: CardBodyProp) {
 export function CardBodyMinhasListas(prop: CardBodyProp) {
 
     return (
-        <CardBodyTemplate css="w-fit bg-gradient-to-br from-lista-000-gradiente via-lista-012-gradiente to-lista-100-gradiente">
+        <CardBodyTemplate css="w-68 bg-gradient-to-br from-lista-000-gradiente via-lista-012-gradiente to-lista-100-gradiente">
             {prop.children}
         </CardBodyTemplate>
     )

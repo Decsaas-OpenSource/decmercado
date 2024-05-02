@@ -11,7 +11,7 @@ export default function ListagemRoot(prop: ListagemRootProp) {
             {
                 prop.exibirListagem ? prop.children
                     : (
-                        <div className="bg-primario-100 text-branco h-1/2
+                        <div className="bg-primario-100 text-branco h-full
                             content-center text-center text-regular-paragrafo">
                             {prop.mensagemVazio}
                         </div>

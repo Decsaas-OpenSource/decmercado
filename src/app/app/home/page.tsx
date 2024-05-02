@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link";
-import { Adicionar, ListaBullet, Sobre } from "../../icons";
+import { CarrinhoCard, ListaBullet, Sobre } from "../../icons";
 import { Header } from "@/app/components/template/header/Header";
 import { Footer } from "@/app/components/template/footer/Footer";
 
@@ -21,6 +21,8 @@ export default function Home() {
     const LIMITE_CARDS_LISTA = 2
     const LIMITE_CARDS_RECEITA = 6
 
+    const INICIO_SLICE_CARDS = 0
+
     const [storageLista] = useState(new ListasDeMercado())
     const [listas, setListas] = useState<ListaDeMercado[]>([])
     const [listaVerMais, setListaVerMais] = useState<boolean>(false)
@@ -33,17 +35,14 @@ export default function Home() {
         storageLista.carregar()
 
         setListaVerMais(storageLista.todos.length > LIMITE_CARDS_LISTA)
-        setListas(storageLista.todos.slice(0, LIMITE_CARDS_LISTA))
+        setListas(storageLista.todos.slice(INICIO_SLICE_CARDS, LIMITE_CARDS_LISTA))
     }, [storageLista])
 
     useEffect(() => {
         storageReceita.carregar()
 
-        console.log(storageReceita.todos)
-        console.log(storageReceita.todos.slice(0, LIMITE_CARDS_RECEITA))
-
         setReceitaVerMais(storageReceita.todos.length > LIMITE_CARDS_RECEITA)
-        setReceitas(storageReceita.todos.slice(0, LIMITE_CARDS_RECEITA))
+        setReceitas(storageReceita.todos.slice(INICIO_SLICE_CARDS, LIMITE_CARDS_RECEITA))
     }, [storageReceita])
 
     return (
@@ -65,6 +64,7 @@ export default function Home() {
                     <Card.BodyMeuCarrinho>
                         <Card.ConteudoCarrinho titulo="Meu Carrinho"
                             detalhe="(Vazio)" />
+                        <Card.IconeCarrinho icon={CarrinhoCard} />
                     </Card.BodyMeuCarrinho>
                 </Card.Root>
 
@@ -77,7 +77,7 @@ export default function Home() {
                                         <Card.ConteudoLista
                                             titulo={item.descricao}
                                             detalhe={`Itens adicionados (${item.quantidade})`} />
-                                        <Card.Icone icon={ListaBullet} />
+                                        <Card.IconeLista icon={ListaBullet} />
                                     </Card.BodyMinhasListas>
                                 </Card.Root>
                             )

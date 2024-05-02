@@ -9,6 +9,7 @@ interface ModalProp {
     onClickSim: (e: any) => void
 }
 
+//TODO: Melhorar
 export default function Modal(prop: ModalProp) {
 
     return (

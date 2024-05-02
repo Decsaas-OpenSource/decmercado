@@ -51,6 +51,18 @@ export default abstract class Dados<T extends Lista> implements DadosInterface {
         return this.#todos
     }
 
+    deletar(objeto: T): void {
+        var todosNoCache = this.#todos
+
+        const encontrado = this.jaExiste(objeto.id)
+
+        if (encontrado)
+            todosNoCache = todosNoCache.filter((l) => l.id != objeto.id)
+
+        localStorage.setItem(this.nomeStorage, JSON.stringify(todosNoCache));
+        this.#todos = todosNoCache
+    }
+
     abstract get nomeStorage(): string
 
     abstract converterObjeto(id: string, descricao: string): Lista

@@ -13,10 +13,13 @@ interface ListaCardsProp {
 
 export default function ListaCards(prop: ListaCardsProp) {
 
+    const TAMANHO_LISTAGEM = prop.listas.length
+    const NENHUM_ITEM_ADICIONADO = 0
+
     return (
 
         <>
-            <div className="mt-2 mb-2 flex items-center w-full">
+            <div className="mt-3 mb-2 flex items-center w-full">
                 <span className="w-full text-bold-sub-titulo text-neutro-800">
                     Minhas listas
                 </span>
@@ -29,13 +32,13 @@ export default function ListaCards(prop: ListaCardsProp) {
 
             <div className="flex overflow-x-scroll whitespace-nowrap">
                 {
-                    prop.listas.length === 0 ?
-                        <Card.Root urlRedirect={URL_BASE_LISTA}>
+                    TAMANHO_LISTAGEM === NENHUM_ITEM_ADICIONADO ?
+                        <Card.Root urlRedirect={`${URL_BASE_LISTA}nova`}>
                             <Card.BodyMinhasListas>
                                 <Card.ConteudoLista
                                     titulo="Adicione uma lista"
                                     detalhe="Nenhum item adicionado" />
-                                <Card.Icone icon={Adicionar} />
+                                <Card.IconeLista icon={Adicionar} />
                             </Card.BodyMinhasListas>
                         </Card.Root> :
                         prop.children
