@@ -2,8 +2,8 @@ import Receita from "@/app/model/lista/Receita"
 
 import { Card } from "./cards/Card"
 import { Adicionar } from "@/app/icons"
-import Botao from "../utils/Botao"
-import { URL_BASE_RECEITA } from "@/app/constants"
+import { URL_RECEITA } from "@/app/constants"
+import { BotaoLink } from "../utils/Botao"
 
 interface ReceitasCardsProp {
     children: React.ReactNode,
@@ -19,19 +19,16 @@ export default function ReceitasCards(prop: ReceitasCardsProp) {
 
     return (
         <>
-            <div className="mt-3 mb-2 flex items-center w-full">
+            <div className="mt-3 flex items-center w-full">
                 <span className="w-full text-bold-sub-titulo text-neutro-800">
                     Minhas receitas
                 </span>
-                <Botao titulo="Nova receita"
-                    href={`${URL_BASE_RECEITA}nova`}
-                    color="bg-secundario-500"
-                    css={"w-max"} />
+                <BotaoLink titulo="Nova receita" href={`${URL_RECEITA}nova`} css="bg-secundario-500 w-max"/>
             </div>
 
             <div className={`flex flex-wrap whitespace-pre-wrap ${TAMANHO_LISTAGEM >= TAMANHO_PARA_CENTRALIZAR ? 'justify-center' : ''}`}>
                 {TAMANHO_LISTAGEM === NENHUM_ITEM_ADICIONADO ?
-                    <Card.Root urlRedirect={`${URL_BASE_RECEITA}nova`}>
+                    <Card.Root urlRedirect={`${URL_RECEITA}nova`}>
                         <Card.BodyMinhasReceitas>
                             <Card.ConteudoReceita
                                 titulo="Adicione uma nova receita" />
@@ -42,7 +39,7 @@ export default function ReceitasCards(prop: ReceitasCardsProp) {
                 }
 
                 {prop.verMais ? (
-                    (<Botao href={URL_BASE_RECEITA} color="bg-secundario-500" titulo="Ver mais" cssLink="w-full mt-3" />)
+                    (<BotaoLink href={URL_RECEITA} css="bg-secundario-500" titulo="Ver mais" cssLink="w-full mt-3" />)
                 ) : false}
             </div>
         </>

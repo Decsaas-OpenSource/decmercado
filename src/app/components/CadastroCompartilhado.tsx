@@ -13,6 +13,7 @@ import Input from "./utils/Input";
 import CadastroProduto from "./utils/CadastroProduto";
 import Dados from "../storage/local/Dados";
 import Lista from "../model/lista/Lista";
+import { DivisorSomenteTexto } from "./utils/Divisor";
 
 interface CadastroCompartilhadoProp {
     storage: [Dados<Lista>, Dispatch<SetStateAction<Dados<Lista>>>];
@@ -68,9 +69,7 @@ export default function CadastroCompartilhado(prop: CadastroCompartilhadoProp) {
                     tamanhoMaximo={20}
                 />
 
-                <div className="text-bold-paragrafo text-center m-2 text-primario-500">
-                    Itens
-                </div>
+                <DivisorSomenteTexto texto="Itens"/>
 
                 <Listagem.Root
                     mensagemVazio="Nenhum item adicionado"
@@ -112,7 +111,8 @@ export default function CadastroCompartilhado(prop: CadastroCompartilhadoProp) {
                         setExibirProduto(false)
                     }}
                     clickConfirmar={(produto) => {
-                        const produtosNovos = [...produtos, produto]
+                        const produtosFiltrados = produtos.filter((p) => p.id != produto.id)
+                        const produtosNovos = [...produtosFiltrados, produto]
                         setProdutos(produtosNovos)
                         lista.produtos = produtosNovos
                         storage.salvar(lista)

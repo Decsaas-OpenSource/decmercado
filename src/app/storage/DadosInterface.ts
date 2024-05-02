@@ -1,9 +1,11 @@
-import Lista from "../model/lista/Lista";
+export default interface DadosInterface<T> {
+    carregar(): void
+    salvar(objeto: T): void,
+    deletar(objeto: T): void
+}
 
-export default interface DadosInterface {
-    jaExiste(id: string): Lista | false,
-    procurar(id: string): Lista,
-    salvar(objeto: Lista): void,
-    carregar(): Lista[]
-    converterObjeto(id: string, descricao: string): Lista
+export interface InterfaceComBusca<T> {
+    jaExiste(id: string): T | false,
+    procurar(id: string): T,
+    converterObjeto(id: string, descricao: string): T
 }

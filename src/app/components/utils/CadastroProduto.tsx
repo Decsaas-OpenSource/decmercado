@@ -1,18 +1,16 @@
 import { useEffect, useState } from "react";
-import Botao from "../utils/Botao";
 import Input from "../utils/Input";
 import SubJanela from "./subJanela/SubJanela";
 import Numerico from "./Numerico";
 import TextArea from "./TextArea";
 import Produto from "@/app/model/Produto";
-import ProdutoNullObject from "@/app/model/nullObject/ProdutoNullObject";
-
+import { Botao } from "./Botao";
 
 interface ProdutoCadastroProp {
     exibir: boolean;
     produto: Produto
     onClose: () => void
-    clickConfirmar: (produto:Produto) => void
+    clickConfirmar: (produto: Produto) => void
 }
 
 export default function CadastroProduto(prop: ProdutoCadastroProp) {
@@ -20,7 +18,7 @@ export default function CadastroProduto(prop: ProdutoCadastroProp) {
     const [nome, setNome] = useState("")
     const [comentario, setComentario] = useState("")
     const [quantidade, setQuantidade] = useState(1.000)
-    const [produto, setProduto] = useState<Produto>(prop.produto) 
+    const [produto, setProduto] = useState<Produto>(prop.produto)
 
     useEffect(() => {
         setProduto(prop.produto)
@@ -65,15 +63,13 @@ export default function CadastroProduto(prop: ProdutoCadastroProp) {
 
             <div className="flex fixed bottom-0 w-full p-5 space-x-5">
                 <Botao titulo="Cancelar item"
-                    color="bg-perigo-300"
-                    css="text-branco"
+                    css="bg-perigo-300 text-branco"
                     onClick={() => {
                         prop.onClose()
                     }} />
 
                 <Botao titulo="Confirmar item"
-                    color="bg-neutro-400"
-                    css="text-branco"
+                    css="bg-neutro-400 text-branco"
                     onClick={() => {
                         const p = new Produto(produto.id, quantidade, nome, comentario)
                         prop.clickConfirmar(p)

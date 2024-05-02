@@ -4,7 +4,7 @@ import Body from "@/app/components/template/Body"
 import { Footer } from "@/app/components/template/footer/Footer"
 import { Header } from "@/app/components/template/header/Header"
 import { Listagem } from "@/app/components/utils/listagem/Listagem"
-import { URL_BASE_RECEITA } from "@/app/constants"
+import { URL_RECEITA } from "@/app/constants"
 import Receita from "@/app/model/lista/Receita"
 import Receitas from "@/app/storage/local/Receitas"
 import { useEffect, useState } from "react"
@@ -41,7 +41,7 @@ export default function MinhasReceitas() {
                                     corPrimaria="bg-primario-100"
                                     corSecundaria="bg-primario-200">
 
-                                    <Listagem.LinhaRedirection item={item} urlBase={`${URL_BASE_RECEITA}${item.id}`} >
+                                    <Listagem.LinhaRedirection item={item} urlBase={`${URL_RECEITA}${item.id}`} >
                                         <Listagem.LinhaConteudo item={item} />
                                     </Listagem.LinhaRedirection>
 
@@ -58,7 +58,7 @@ export default function MinhasReceitas() {
             </Body>
 
             <Footer.Root>
-                <Footer.Botao color="bg-neutro-400" href={`${URL_BASE_RECEITA}nova`} titulo="Adicionar nova receita" />
+                <Footer.BotaoLink color="bg-neutro-400" href={`${URL_RECEITA}nova`} titulo="Adicionar nova receita" />
                 <Footer.Menu focoHome />
             </Footer.Root>
         </>

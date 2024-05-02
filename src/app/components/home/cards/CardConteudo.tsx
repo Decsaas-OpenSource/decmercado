@@ -1,23 +1,20 @@
-interface CardConteudoTemplateProp {
-    children: React.ReactNode
-    css: string
-}
-
-function CardConteudoTemplate(prop: CardConteudoTemplateProp) {
-
-    return (
-        <div className={`border-l-primario-500 border-l-8 p-2 rounded-md ${prop.css}`}>
-            {prop.children}
-        </div>
-    )
-}
-
-interface CardConteudoProd {
+interface CardConteudoCarrinhoProd {
     titulo: string,
-    detalhe: string
+    totalNoCarrinho: number,
+    totalParaComprar: number,
 }
 
-export function CardConteudoCarrinho(prop: CardConteudoProd) {
+export function CardConteudoCarrinho(prop: CardConteudoCarrinhoProd) {
+
+    const mensagemComStatus = prop.totalNoCarrinho > 0 && prop.totalParaComprar > 0
+
+    const mensagemTotalNoCarrinho = mensagemComStatus ?
+        `Itens no carrinho (${prop.totalNoCarrinho})` :
+        "Vazio"
+
+    const mensagemTotalParaComprar = mensagemComStatus ?
+        `Total de itens para compra (${prop.totalParaComprar})` :
+        false
 
     return (
         <div className="rounded-md h-[100px] min-w-44">
@@ -26,13 +23,22 @@ export function CardConteudoCarrinho(prop: CardConteudoProd) {
             </div>
 
             <div className="text-regular-label text-branco">
-                {prop.detalhe}
+                {mensagemTotalNoCarrinho}
+            </div>
+
+            <div className="text-regular-label text-branco">
+                {mensagemTotalParaComprar}
             </div>
         </div>
     )
 }
 
-export function CardConteudoLista(prop: CardConteudoProd) {
+interface CardConteudoListaProd {
+    titulo: string,
+    detalhe: string
+}
+
+export function CardConteudoLista(prop: CardConteudoListaProd) {
 
     return (
         <div className="border-l-primario-500 border-l-8 p-2 rounded-md h-[90px] content-center">

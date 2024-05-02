@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CSS_LISTAGEM_LINHA } from "./Listagem";
 
 interface ListagemLinhaRedirectionProp {
     item: ListagemDTO,
@@ -9,7 +10,7 @@ interface ListagemLinhaRedirectionProp {
 export default function ListagemLinhaRedirection(prop: ListagemLinhaRedirectionProp) {
 
     return (
-        <Link href={prop.urlBase} className="w-full flex items-center">
+        <Link href={prop.urlBase} className={CSS_LISTAGEM_LINHA}>
             {prop.children}
         </Link>
     )

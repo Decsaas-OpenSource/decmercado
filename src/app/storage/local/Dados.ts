@@ -1,7 +1,7 @@
 import Lista from "../../model/lista/Lista"
-import DadosInterface from "../DadosInterface"
+import DadosInterface, { InterfaceComBusca } from "../DadosInterface"
 
-export default abstract class Dados<T extends Lista> implements DadosInterface {
+export default abstract class Dados<T extends Lista> implements DadosInterface<T>, InterfaceComBusca<T> {
 
     #todos: T[]
 
@@ -22,6 +22,19 @@ export default abstract class Dados<T extends Lista> implements DadosInterface {
         return encontrados.length === 1 ? encontrados[0] : false
     }
 
+    carregar(): T[] {
+        const listaStorage = localStorage.getItem(this.nomeStorage);
+        if (listaStorage) {
+            var parseLista: T[] = JSON.parse(listaStorage)
+            parseLista = parseLista.map((l) => {
+                return <T>Lista.fromJSON(<T>this.converterObjeto(l.id, l.descricao), l)
+            })
+            this.#todos = parseLista
+        }
+
+        return this.#todos
+    }
+
     salvar(objeto: T): void {
         if (!objeto.descricao) return
 
@@ -38,19 +51,6 @@ export default abstract class Dados<T extends Lista> implements DadosInterface {
         this.#todos = todosNoCache
     }
 
-    carregar(): T[] {
-        const listaStorage = localStorage.getItem(this.nomeStorage);
-        if (listaStorage) {
-            var parseLista: T[] = JSON.parse(listaStorage)
-            parseLista = parseLista.map((l) => {
-                return <T>Lista.fromJSON(<T>this.converterObjeto(l.id, l.descricao), l)
-            })
-            this.#todos = parseLista
-        }
-
-        return this.#todos
-    }
-
     deletar(objeto: T): void {
         var todosNoCache = this.#todos
 
@@ -65,7 +65,7 @@ export default abstract class Dados<T extends Lista> implements DadosInterface {
 
     abstract get nomeStorage(): string
 
-    abstract converterObjeto(id: string, descricao: string): Lista
+    abstract converterObjeto(id: string, descricao: string): T
 
     abstract procurar(id: string): T
 }

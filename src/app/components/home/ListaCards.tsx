@@ -2,8 +2,8 @@ import ListaDeMercado from "@/app/model/lista/ListaDeMercado"
 import { Card } from "./cards/Card"
 import { Adicionar } from "@/app/icons"
 import Link from "next/link"
-import Botao from "../utils/Botao"
-import { URL_BASE_LISTA } from "@/app/constants"
+import { URL_LISTA } from "@/app/constants"
+import { BotaoLink } from "../utils/Botao"
 
 interface ListaCardsProp {
     children: React.ReactNode,
@@ -19,21 +19,18 @@ export default function ListaCards(prop: ListaCardsProp) {
     return (
 
         <>
-            <div className="mt-3 mb-2 flex items-center w-full">
+            <div className="mt-3 flex items-center w-full">
                 <span className="w-full text-bold-sub-titulo text-neutro-800">
                     Minhas listas
                 </span>
-                
-                <Botao titulo="Nova lista"
-                    href={`${URL_BASE_LISTA}nova`}
-                    color="bg-primario-500"
-                    css={"w-max"} />
+
+                <BotaoLink titulo="Nova lista" href={`${URL_LISTA}nova`} css="bg-primario-500 w-max" />
             </div>
 
             <div className="flex overflow-x-scroll whitespace-nowrap">
                 {
                     TAMANHO_LISTAGEM === NENHUM_ITEM_ADICIONADO ?
-                        <Card.Root urlRedirect={`${URL_BASE_LISTA}nova`}>
+                        <Card.Root urlRedirect={`${URL_LISTA}nova`}>
                             <Card.BodyMinhasListas>
                                 <Card.ConteudoLista
                                     titulo="Adicione uma lista"
@@ -46,7 +43,7 @@ export default function ListaCards(prop: ListaCardsProp) {
 
                 {prop.verMais ?
                     (
-                        <Link href={URL_BASE_LISTA} className="flex w-fit m-1" key={"vermais"}>
+                        <Link href={URL_LISTA} className="flex w-fit m-1" key={"vermais"}>
                             <div className={`flex items-center rounded-lg bg-primario-500 w-20 justify-center
                      `}>
                                 <div className="p-2 rounded-md h-[90px] content-center">

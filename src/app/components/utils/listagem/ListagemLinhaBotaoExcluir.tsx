@@ -1,10 +1,9 @@
 "use client"
 
-import Modal from "../Modal"
-
 import { useState } from "react"
 import { Excluir } from "@/app/icons"
 import { Listagem } from "./Listagem"
+import { Modal } from "../modal/Modal"
 
 interface ListagemLinhaBotaoExcluirProp {
     item: ListagemDTO,
@@ -14,27 +13,25 @@ interface ListagemLinhaBotaoExcluirProp {
 export default function ListagemLinhaBotaoExcluir(prop: ListagemLinhaBotaoExcluirProp) {
 
     const [exibirModal, setExibirModal] = useState(false)
-    const [objetoParaExcluir, setObjetoParaExcluir] = useState<ListagemDTO>()
 
-    const abrirModal = (objetoExcluir: ListagemDTO) => {
+    const abrirModal = () => {
         setExibirModal(true)
-        setObjetoParaExcluir(objetoExcluir)
     }
 
     return (
         <>
-            <Listagem.ListaBotao onClick={() => abrirModal(prop.item)} icon={Excluir} />
+            <Listagem.ListaBotao onClick={() => abrirModal()} icon={Excluir} css="text-perigo-300" />
 
-            <Modal
-                exibir={exibirModal}
-                objeto={objetoParaExcluir}
-                onClickNao={() => {
-                    setExibirModal(false)
-                }}
-                onClickSim={(e: any) => {
-                    setExibirModal(false)
-                    prop.onClickSim(prop.item)
-                }} />
+            <Modal.Root exibir={exibirModal} titulo="Atenção" >
+                <Modal.Mensagem mensagem={`Deseja realmente remover o '${prop.item.descricao}'?`} />
+                <Modal.Botoes>
+                    <Modal.BotaoNao onClick={() => setExibirModal(false)}/>
+                    <Modal.BotaoSim onClick={() => {
+                        prop.onClickSim(prop.item)
+                        setExibirModal(false)
+                    }}/>
+                </Modal.Botoes>
+            </Modal.Root>
         </>
     )
 }

@@ -5,7 +5,7 @@ interface HeaderProp {
 export default function HeaderConteudo(prop: HeaderProp) {
 
     return (
-        <span className="m-auto">
+        <span className="mr-auto">
             {prop.children}
         </span>
     )

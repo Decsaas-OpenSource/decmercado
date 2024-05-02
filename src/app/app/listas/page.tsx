@@ -8,7 +8,7 @@ import { useEffect, useState } from "react"
 
 import ListasDeMercado from "@/app/storage/local/ListasDeMercado"
 import ListaDeMercado from "@/app/model/lista/ListaDeMercado"
-import { URL_BASE_LISTA } from "@/app/constants"
+import { URL_LISTA } from "@/app/constants"
 
 export default function MinhasListas() {
 
@@ -42,7 +42,7 @@ export default function MinhasListas() {
                                     corPrimaria="bg-primario-100"
                                     corSecundaria="bg-primario-200">
 
-                                    <Listagem.LinhaRedirection item={item} urlBase={`${URL_BASE_LISTA}${item.id}`} >
+                                    <Listagem.LinhaRedirection item={item} urlBase={`${URL_LISTA}${item.id}`} >
                                         <Listagem.LinhaConteudo item={item} />
                                     </Listagem.LinhaRedirection>
 
@@ -60,7 +60,7 @@ export default function MinhasListas() {
             </Body>
 
             <Footer.Root>
-                <Footer.Botao color="bg-neutro-400" href={`${URL_BASE_LISTA}nova`} titulo="Adicionar nova lista" />
+                <Footer.BotaoLink color="bg-neutro-400" href={`${URL_LISTA}nova`} titulo="Adicionar nova lista" />
                 <Footer.Menu focoHome />
             </Footer.Root>
         </>

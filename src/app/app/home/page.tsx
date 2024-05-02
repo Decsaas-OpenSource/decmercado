@@ -14,7 +14,10 @@ import ListaCards from "@/app/components/home/ListaCards";
 import ReceitasCards from "@/app/components/home/ReceitasCards";
 import Receitas from "@/app/storage/local/Receitas";
 import Receita from "@/app/model/lista/Receita";
-import { URL_BASE_LISTA, URL_BASE_CARRINHO, URL_BASE_RECEITA, URL_BASE_SOBRE } from "@/app/constants";
+import { URL_LISTA, URL_CARRINHO, URL_RECEITA, URL_SOBRE } from "@/app/constants";
+import { Divisor } from "@/app/components/utils/Divisor";
+import StoregeMeuCarrinho from "@/app/storage/local/MeuCarrinho";
+import Produto from "@/app/model/Produto";
 
 export default function Home() {
 
@@ -30,6 +33,18 @@ export default function Home() {
     const [storageReceita] = useState(new Receitas())
     const [receitas, setReceitas] = useState<Receita[]>([])
     const [receitaVerMais, setReceitaVerMais] = useState<boolean>(false)
+
+    const [storageMeuCarrinho] = useState(new StoregeMeuCarrinho())
+    const [produtosNoCarrinho, setProdutosNoCarrinho] = useState<Produto[]>([])
+    const [produtosParaComprar, setProdutosParaComprar] = useState<Produto[]>([])
+
+    useEffect(() => {
+        storageMeuCarrinho.carregar()
+
+        setProdutosNoCarrinho(storageMeuCarrinho.meuCarrinho.noCarrinho)
+        setProdutosParaComprar(storageMeuCarrinho.meuCarrinho.paraComprar)
+    }, [storageMeuCarrinho])
+
 
     useEffect(() => {
         storageLista.carregar()
@@ -53,26 +68,29 @@ export default function Home() {
                     <Header.SubTitulo valor="Site criado por decsaas.dev.br"></Header.SubTitulo>
                 </Header.Conteudo>
                 <Header.Botao>
-                    <Link href={URL_BASE_SOBRE} className="m-auto">
+                    <Link href={URL_SOBRE} className="m-auto">
                         {Sobre}
                     </Link>
                 </Header.Botao>
             </Header.Root>
 
             <Body>
-                <Card.Root urlRedirect={URL_BASE_CARRINHO}>
+                <Card.Root urlRedirect={URL_CARRINHO}>
                     <Card.BodyMeuCarrinho>
                         <Card.ConteudoCarrinho titulo="Meu Carrinho"
-                            detalhe="(Vazio)" />
+                            totalNoCarrinho={produtosNoCarrinho.length}
+                            totalParaComprar={produtosParaComprar.length} />
                         <Card.IconeCarrinho icon={CarrinhoCard} />
                     </Card.BodyMeuCarrinho>
                 </Card.Root>
+
+                <Divisor />
 
                 <ListaCards listas={listas} verMais={listaVerMais}>
                     {
                         listas.map((item) => {
                             return (
-                                <Card.Root key={item.id} urlRedirect={`${URL_BASE_LISTA}${item.id}`}>
+                                <Card.Root key={item.id} urlRedirect={`${URL_LISTA}${item.id}`}>
                                     <Card.BodyMinhasListas>
                                         <Card.ConteudoLista
                                             titulo={item.descricao}
@@ -89,7 +107,7 @@ export default function Home() {
                     {
                         receitas.map((item) => {
                             return (
-                                <Card.Root key={item.id} urlRedirect={`${URL_BASE_RECEITA}${item.id}`}>
+                                <Card.Root key={item.id} urlRedirect={`${URL_RECEITA}${item.id}`}>
                                     <Card.BodyMinhasReceitas>
                                         <Card.ConteudoReceita
                                             titulo={item.descricao}
