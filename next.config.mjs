@@ -3,4 +3,13 @@ const nextConfig = {
     reactStrictMode: false //TODO: validar essa alteracao
 };
 
-export default nextConfig;
+import withPWAInit from "@ducanh2912/next-pwa";
+
+const withPWA = withPWAInit({
+    dest: "public",
+    register: true
+});
+
+export default withPWA({
+    ...nextConfig
+});
