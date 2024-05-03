@@ -1,3 +1,4 @@
+import { ordernaProduto } from "../functions/ordernaProduto";
 import Produto from "./Produto";
 
 export default class MeuCarrinho {
@@ -25,17 +26,16 @@ export default class MeuCarrinho {
     }
 
     get noCarrinho(): Produto[] {
-        return this.#noCarrinho
+        return this.#noCarrinho.sort(ordernaProduto)
     }
 
-    set paraComprar(noCarrinho: Produto[]) {
-        this.#paraComprar = noCarrinho;
+    set paraComprar(paraComprar: Produto[]) {
+        this.#paraComprar = paraComprar;
     }
 
     get paraComprar(): Produto[] {
-        return this.#paraComprar
+        return this.#paraComprar.sort(ordernaProduto)
     }
-
 
     toJSON() {
         return {
@@ -44,4 +44,25 @@ export default class MeuCarrinho {
             paraComprar: this.#paraComprar.map((p) => JSON.stringify(p))
         }
     }
+
+    static fromJSON(storage: MeuCarrinho): MeuCarrinho {
+        const novaInstancia = new MeuCarrinho(storage.id, [], [])
+
+        function converteProduto(p: any) {
+            if (p instanceof Object)
+                return Produto.fromJSON(p)
+            return Produto.fromJSON(JSON.parse(p))
+        }
+
+        novaInstancia.noCarrinho = storage.noCarrinho?.map((p) => {
+            return converteProduto(p)
+        })
+
+        novaInstancia.paraComprar = storage.paraComprar?.map((p) => {
+            return converteProduto(p)
+        })
+
+        return novaInstancia
+    }
+
 }

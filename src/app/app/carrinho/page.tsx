@@ -25,17 +25,19 @@ export default function MeuCarrinho() {
     useEffect(() => {
         storageMeuCarrinho.carregar()
 
-        setProdutosNoCarrinho(storageMeuCarrinho.meuCarrinho.noCarrinho)
-        setProdutosParaComprar(storageMeuCarrinho.meuCarrinho.paraComprar)
+        const carrinho = storageMeuCarrinho.meuCarrinho
+
+        setProdutosNoCarrinho(carrinho.noCarrinho)
+        setProdutosParaComprar(carrinho.paraComprar)
     }, [storageMeuCarrinho])
 
     function salvarStorage(produtosNoCarrinho: Produto[], produtosParaComprar: Produto[]) {
-        setProdutosNoCarrinho(produtosNoCarrinho)
-        setProdutosParaComprar(produtosParaComprar)
-
         const carrinho = storageMeuCarrinho.meuCarrinho
         carrinho.noCarrinho = produtosNoCarrinho
         carrinho.paraComprar = produtosParaComprar
+
+        setProdutosNoCarrinho(carrinho.noCarrinho)
+        setProdutosParaComprar(carrinho.paraComprar)
 
         storageMeuCarrinho.salvar(carrinho)
     }

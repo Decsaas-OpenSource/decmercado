@@ -7,7 +7,8 @@ import withPWAInit from "@ducanh2912/next-pwa";
 
 const withPWA = withPWAInit({
     dest: "public",
-    register: true
+    register: true, 
+    disable: process.env.NODE_ENV === "development"
 });
 
 export default withPWA({

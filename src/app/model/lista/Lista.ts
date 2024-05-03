@@ -1,3 +1,4 @@
+import { ordernaProduto } from "@/app/functions/ordernaProduto";
 import Produto from "../Produto";
 
 export default abstract class Lista implements ListagemDTO {
@@ -29,13 +30,13 @@ export default abstract class Lista implements ListagemDTO {
     }
 
     get produtos(): Produto[] {
-        return this.#produtos
+        return this.#produtos.sort(ordernaProduto);
     }
 
     get quantidade(): number {
         if (this.#produtos)
-            return this.#produtos?.length 
-        
+            return this.#produtos?.length
+
         return 0
     }
 
@@ -47,13 +48,13 @@ export default abstract class Lista implements ListagemDTO {
         }
     }
 
-    static fromJSON(novaInstancia :Lista, listaParaConversao: Lista): Lista {
+    static fromJSON(novaInstancia: Lista, listaParaConversao: Lista): Lista {
         novaInstancia.produtos = listaParaConversao.produtos.map((p: Produto) => {
             return Produto.fromJSON(JSON.parse(p.toString()))
         })
         return novaInstancia
     }
 
-    abstract instanciarNovoObjeto<T>(id: string, descricao : string) : T
+    abstract instanciarNovoObjeto<T>(id: string, descricao: string): T
 
 }

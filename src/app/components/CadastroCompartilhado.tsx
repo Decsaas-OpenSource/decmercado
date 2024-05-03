@@ -109,8 +109,8 @@ export default function CadastroCompartilhado(prop: CadastroCompartilhadoProp) {
                                     <Listagem.ListaBotaoExcluir item={item}
                                         onClickSim={(produto) => {
                                             const produtosFiltrado = produtos.filter((p) => p.id != produto.id)
-                                            setProdutos(produtosFiltrado)
                                             lista.produtos = produtosFiltrado
+                                            setProdutos(lista.produtos)                                            
                                             storage.salvar(lista)
                                         }}
                                     />
@@ -139,8 +139,8 @@ export default function CadastroCompartilhado(prop: CadastroCompartilhadoProp) {
                 clickConfirmar={(produto) => {
                     const produtosFiltrados = produtos.filter((p) => p.id != produto.id)
                     const produtosNovos = [...produtosFiltrados, produto]
-                    setProdutos(produtosNovos)
-                    lista.produtos = produtosNovos
+                    lista.produtos = produtosNovos                    
+                    setProdutos(lista.produtos)
                     storage.salvar(lista)
                 }} />
 

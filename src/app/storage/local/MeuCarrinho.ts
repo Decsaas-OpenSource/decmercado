@@ -11,7 +11,7 @@ export default class StoregeMeuCarrinho implements DadosInterface<MeuCarrinho> {
         this.#instancia = new MeuCarrinhoNullObject()
     }
 
-    get meuCarrinho() {
+    get meuCarrinho(): MeuCarrinho {
         return this.#instancia
     }
 
@@ -26,17 +26,7 @@ export default class StoregeMeuCarrinho implements DadosInterface<MeuCarrinho> {
     carregar(): void {
         const listaStorage = localStorage.getItem(this.nomeStorage);
         if (listaStorage) {
-
-            var parseMeuCarrinho: MeuCarrinho = JSON.parse(listaStorage)
-
-            parseMeuCarrinho.noCarrinho = parseMeuCarrinho.noCarrinho?.map((p) => {
-                return Produto.fromJSON(p)
-            })
-
-            parseMeuCarrinho.paraComprar = parseMeuCarrinho.paraComprar?.map((p) => {
-                return Produto.fromJSON(p)
-            })
-
+            var parseMeuCarrinho: MeuCarrinho = MeuCarrinho.fromJSON(JSON.parse(listaStorage))
             this.#instancia = parseMeuCarrinho
         }
     }
