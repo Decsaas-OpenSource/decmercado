@@ -1,6 +1,6 @@
 import Link from "next/link"
 
-const CSS_BASICO = "p-2 content-center text-center text-branco text-bold-label rounded-lg"
+const CSS_BASICO = "p-2 pl-4 pr-4 content-center text-center text-branco text-bold-label rounded-lg"
 
 interface BotaoLinkProp {
     titulo: string,

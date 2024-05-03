@@ -19,7 +19,7 @@ export default function ListaCards(prop: ListaCardsProp) {
     return (
 
         <>
-            <div className="mt-3 flex items-center w-full">
+            <div className="mt-3 mb-3 flex items-center w-full">
                 <span className="w-full text-bold-sub-titulo text-neutro-800">
                     Minhas listas
                 </span>
@@ -43,9 +43,9 @@ export default function ListaCards(prop: ListaCardsProp) {
 
                 {prop.verMais ?
                     (
-                        <Link href={URL_LISTA} className="flex w-fit m-1" key={"vermais"}>
-                            <div className={`flex items-center rounded-lg bg-primario-500 w-20 justify-center
-                     `}>
+                        <Link href={URL_LISTA} className="flex w-fit mb-3 mr-3" key={"vermais"}>
+                            <div className="flex items-center rounded-lg bg-primario-500 
+                                    w-20 justify-center shadow-default">
                                 <div className="p-2 rounded-md h-[90px] content-center">
                                     <div className="text-bold-label text-branco">
                                         Ver mais

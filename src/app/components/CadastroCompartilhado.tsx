@@ -119,7 +119,6 @@ export default function CadastroCompartilhado(prop: CadastroCompartilhadoProp) {
                         })
                     }
                 </Listagem.Root>
-
             </Body>
 
             <Footer.Root>
@@ -156,7 +155,5 @@ export default function CadastroCompartilhado(prop: CadastroCompartilhadoProp) {
                 </Modal.Botoes>
             </Modal.Root>
         </>
-
-
     )
 }

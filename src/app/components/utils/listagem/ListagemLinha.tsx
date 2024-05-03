@@ -19,7 +19,7 @@ export default function ListagemLinha(prop: ListagemLinhaProp) {
         cssDinamico = cssDinamico.concat(" rounded-b-md")
 
     return (
-        <div className={`flex space-x-3 h-[66px] pr-2 mb-2 ${cssDinamico} justify-between`}>
+        <div className={`flex h-[66px] pr-2 mb-2 ${cssDinamico} justify-between`}>
             {prop.children}
         </div>
     )

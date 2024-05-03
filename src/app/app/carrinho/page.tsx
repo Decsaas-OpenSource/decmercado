@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 import StoregeMeuCarrinho from "@/app/storage/local/MeuCarrinho";
 import Produto from "@/app/model/Produto";
 import { BotaoComIcone } from "@/app/components/utils/Botao";
-import { Carrinho } from "@/app/icons";
+import { EsvaziarCarrinho } from "@/app/icons";
 import { Modal } from "@/app/components/utils/modal/Modal";
 
 export default function MeuCarrinho() {
@@ -62,7 +62,7 @@ export default function MeuCarrinho() {
                 </Header.Conteudo>
                 <Header.Botao>
                     <BotaoComIcone
-                        icon={Carrinho} css="text-perigo-300"
+                        icon={EsvaziarCarrinho} css="text-perigo-300"
                         onClick={() => {
                             setExibirModal(true)
                         }} />

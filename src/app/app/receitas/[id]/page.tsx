@@ -9,12 +9,10 @@ import { useState } from "react";
 export default function CadastroReceita() {
 
     return (
-        <>
-            <CadastroCompartilhado
-                lista={useState(new ReceitaNullObject())}
-                storage={useState(new Receitas())}
-                urlOrigem={URL_RECEITA}
-            />
-        </>
+        <CadastroCompartilhado
+            lista={useState(new ReceitaNullObject())}
+            storage={useState(new Receitas())}
+            urlOrigem={URL_RECEITA}
+        />
     )
 }

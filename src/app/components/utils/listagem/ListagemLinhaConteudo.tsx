@@ -14,7 +14,7 @@ export default function ListagemLinhaConteudo(prop: ListagemLinhaConteudoProp) {
         <>
             <div className="min-w-[70px] text-center">
                 <div className="text-bold-label">{prop.item.quantidade.toFixed(decimals)}</div>
-                <div className="text-regular-label">Iten(s)</div>
+                <div className="text-regular-label">Item(ns)</div>
             </div>
 
             <div className="text-left w-full max-w-[200px]">

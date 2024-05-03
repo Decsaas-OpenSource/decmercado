@@ -41,7 +41,7 @@ interface CardConteudoListaProd {
 export function CardConteudoLista(prop: CardConteudoListaProd) {
 
     return (
-        <div className="border-l-primario-500 border-l-8 p-2 rounded-md h-[90px] content-center">
+        <div className="border-l-primario-500 border-l-8 p-2 rounded-md h-[90px] w-full content-center">
             <div className="text-bold-sub-titulo text-primario-500 text-ellipsis overflow-hidden">
                 {prop.titulo}
             </div>

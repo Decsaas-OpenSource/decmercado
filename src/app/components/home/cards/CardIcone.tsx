@@ -5,7 +5,7 @@ interface CardIconePropTemplate {
 
 function CardIcone(prop: CardIconePropTemplate) {
     return (
-        <div className={`${prop.css} pr-2`}>
+        <div className={`${prop.css}`}>
             {prop.icon}
         </div>
     )
@@ -23,12 +23,12 @@ export function CardIconeCarrinho(prop: CardIconeProp) {
 
 export function CardIconeLista(prop: CardIconeProp) {
     return (
-        <CardIcone css="text-primario-500" icon={prop.icon} />
+        <CardIcone css="p-5 text-primario-500" icon={prop.icon} />
     )
 }
 
 export function CardIconeReceita(prop: CardIconeProp) {
     return (
-        <CardIcone css="text-branco" icon={prop.icon} />
+        <CardIcone css="p-5 text-branco" icon={prop.icon} />
     )
 }
