@@ -10,7 +10,7 @@ interface MenuFooterProp {
 export default function FooterMenu(prop: MenuFooterProp) {
 
     return (
-        <div className="flex bg-primario-500 text-branco justify-center space-x-32 h-[47px]">
+        <div className="flex bg-primario-500 text-branco justify-center space-x-32 pb-7 pt-3">
             <Link href={URL_HOME} className="content-center">
                 {prop.focoHome ? HomeSolid : Home}
             </Link>

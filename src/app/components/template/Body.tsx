@@ -6,7 +6,7 @@ interface BodyProp {
 export default function Body(prop: BodyProp) {
 
     return (
-        <div className={`h-full w-full p-[12px] ${prop.css}`}>
+        <div className={`relative flex flex-col grow h-full w-full p-3 pb-28 ${prop.css}`}>
             {prop.children}
         </div>
     )
