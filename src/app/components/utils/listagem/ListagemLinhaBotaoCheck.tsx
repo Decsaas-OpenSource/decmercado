@@ -25,8 +25,6 @@ export default function ListagemLinhaBotaoCheck(prop: ListagemLinhaBotaoCheckPro
                     :
                     <ListagemLinhaBotao onClick={trocaEstado} css="text-neutro-300" icon={Check} />
             }
-
-
         </>
     )
 }

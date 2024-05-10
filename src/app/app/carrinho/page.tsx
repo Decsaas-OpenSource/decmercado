@@ -136,7 +136,7 @@ export default function MeuCarrinho() {
             </Body>
 
             <Footer.Root>
-                <Footer.BotaoLink color="bg-alerta-200 text-neutro-500"
+                <Footer.BotaoLink css="bg-alerta-200 text-neutro-500"
                     href={URL_CARRINHO_ESCOLHA_LISTA}
                     titulo="Selecionar lista de compras" />
                 <Footer.Menu focoCarrinho />

@@ -24,7 +24,7 @@ export default function ListaCards(prop: ListaCardsProp) {
                     Minhas listas
                 </span>
 
-                <BotaoLink titulo="Nova lista" href={`${URL_LISTA}nova`} css="bg-primario-500 w-max" />
+                <BotaoLink role="BotaoLinkListaCards" titulo="Nova lista" href={`${URL_LISTA}nova`} css="bg-primario-500 w-max" />
             </div>
 
             <div className="flex overflow-x-scroll whitespace-nowrap">

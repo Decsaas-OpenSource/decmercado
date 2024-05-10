@@ -71,7 +71,7 @@ export default function EscolhaLista() {
             </Body>
 
             <Footer.Root>
-                <Footer.Botao color="bg-neutro-400"
+                <Footer.Botao css="bg-neutro-400"
                     onClick={(e) => {
                         const meuCarrinho = storageMeuCarrinho.meuCarrinho
                         const produtos: Produto[] = []

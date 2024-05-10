@@ -13,6 +13,7 @@ export default function Input(prop: InputProp) {
             <label className="text-bold-paragrafo">{prop.label}</label>
             <br />
             <input
+                aria-label={prop.label}
                 className="w-full border-b-2 rounded-none border-x-primario-500 text-regular-paragrafo
                             focus:outline-none pl-2 pb-1"
                 type="text"

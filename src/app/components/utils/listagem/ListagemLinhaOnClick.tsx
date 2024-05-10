@@ -9,7 +9,7 @@ interface ListagemLinhaOnClickProp {
 export default function ListagemLinhaOnClick(prop: ListagemLinhaOnClickProp) {
 
     return (
-        <div className={CSS_LISTAGEM_LINHA} onClick={() => { prop.onClick(prop.item) }}>
+        <div role="ListagemLinhaOnClick" className={CSS_LISTAGEM_LINHA} onClick={() => { prop.onClick(prop.item) }}>
             {prop.children}
         </div>
     )

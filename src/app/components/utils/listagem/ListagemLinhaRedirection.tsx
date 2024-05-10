@@ -2,7 +2,6 @@ import Link from "next/link";
 import { CSS_LISTAGEM_LINHA } from "./Listagem";
 
 interface ListagemLinhaRedirectionProp {
-    item: ListagemDTO,
     urlBase: string,
     children: React.ReactNode
 }

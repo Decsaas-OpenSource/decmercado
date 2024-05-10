@@ -86,7 +86,7 @@ export default function Home() {
                         <Card.ConteudoCarrinho titulo="Meu Carrinho"
                             totalNoCarrinho={produtosNoCarrinho.length}
                             totalParaComprar={produtosParaComprar.length} />
-                        <Card.IconeCarrinho icon={CarrinhoCard} />
+                        <Card.IconeCarrinho />
                     </Card.BodyMeuCarrinho>
                 </Card.Root>
 

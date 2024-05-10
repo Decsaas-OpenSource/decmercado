@@ -9,7 +9,7 @@ interface ModalRootProp {
 export default function ModalRoot(prop: ModalRootProp) {
 
     return (
-        <SubJanela exibir={prop.exibir} >
+        <SubJanela role="Modal" exibir={prop.exibir} >
             <div className="bg-perigo-200 text-bold-sub-titulo text-branco h-[41px] items-center justify-center flex">
                 {prop.titulo}
             </div>

@@ -42,7 +42,7 @@ export default function MinhasListas() {
                                     corPrimaria="bg-primario-100"
                                     corSecundaria="bg-primario-200">
 
-                                    <Listagem.LinhaRedirection item={item} urlBase={`${URL_LISTA}${item.id}`} >
+                                    <Listagem.LinhaRedirection urlBase={`${URL_LISTA}${item.id}`} >
                                         <Listagem.LinhaConteudo item={item} />
                                     </Listagem.LinhaRedirection>
 
@@ -60,7 +60,7 @@ export default function MinhasListas() {
             </Body>
 
             <Footer.Root>
-                <Footer.BotaoLink color="bg-neutro-400" href={`${URL_LISTA}nova`} titulo="Adicionar nova lista" />
+                <Footer.BotaoLink css="bg-neutro-400" href={`${URL_LISTA}nova`} titulo="Adicionar nova lista" />
                 <Footer.Menu focoHome />
             </Footer.Root>
         </>

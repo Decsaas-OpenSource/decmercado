@@ -41,7 +41,7 @@ export default function MinhasReceitas() {
                                     corPrimaria="bg-primario-100"
                                     corSecundaria="bg-primario-200">
 
-                                    <Listagem.LinhaRedirection item={item} urlBase={`${URL_RECEITA}${item.id}`} >
+                                    <Listagem.LinhaRedirection urlBase={`${URL_RECEITA}${item.id}`} >
                                         <Listagem.LinhaConteudo item={item} />
                                     </Listagem.LinhaRedirection>
 
@@ -58,7 +58,7 @@ export default function MinhasReceitas() {
             </Body>
 
             <Footer.Root>
-                <Footer.BotaoLink color="bg-neutro-400" href={`${URL_RECEITA}nova`} titulo="Adicionar nova receita" />
+                <Footer.BotaoLink css="bg-neutro-400" href={`${URL_RECEITA}nova`} titulo="Adicionar nova receita" />
                 <Footer.Menu focoHome />
             </Footer.Root>
         </>

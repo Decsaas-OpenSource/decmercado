@@ -1,3 +1,5 @@
+import { Adicionar, CarrinhoCard } from "@/app/icons"
+
 interface CardIconePropTemplate {
     icon: JSX.Element
     css: string
@@ -11,24 +13,24 @@ function CardIcone(prop: CardIconePropTemplate) {
     )
 }
 
-interface CardIconeProp {
-    icon: JSX.Element
+export function CardIconeCarrinho() {
+    return (
+        <CardIcone css="m-auto text-branco" icon={CarrinhoCard} />
+    )
 }
 
-export function CardIconeCarrinho(prop: CardIconeProp) {
+export function CardIconeReceita() {
     return (
-        <CardIcone css="m-auto text-branco" icon={prop.icon} />
+        <CardIcone css="p-5 text-branco" icon={Adicionar} />
     )
+}
+
+interface CardIconeProp {
+    icon: JSX.Element
 }
 
 export function CardIconeLista(prop: CardIconeProp) {
     return (
         <CardIcone css="p-5 text-primario-500" icon={prop.icon} />
-    )
-}
-
-export function CardIconeReceita(prop: CardIconeProp) {
-    return (
-        <CardIcone css="p-5 text-branco" icon={prop.icon} />
     )
 }

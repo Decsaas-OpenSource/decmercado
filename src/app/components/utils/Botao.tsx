@@ -3,6 +3,7 @@ import Link from "next/link"
 const CSS_BASICO = "p-2 pl-4 pr-4 content-center text-center text-branco text-bold-label rounded-lg"
 
 interface BotaoLinkProp {
+    role?: string,
     titulo: string,
     href: string,
     css?: string,
@@ -13,7 +14,7 @@ interface BotaoLinkProp {
 export function BotaoLink(prop: BotaoLinkProp) {
 
     return (
-        <Link href={prop.href} aria-disabled={prop.desabilitar} className={`${prop.cssLink}`}>
+        <Link role={prop.role} href={prop.href} aria-disabled={prop.desabilitar} className={`${prop.cssLink}`}>
             <div className={`${CSS_BASICO} ${prop.css} ${prop.desabilitar ? "opacity-40" : ""}`}>
                 {prop.titulo}
             </div>
@@ -22,6 +23,7 @@ export function BotaoLink(prop: BotaoLinkProp) {
 }
 
 interface BotaoProp {
+    role?: string,
     titulo: string,
     css?: string,
     cssLink?: string,
@@ -32,7 +34,7 @@ interface BotaoProp {
 export function Botao(prop: BotaoProp) {
 
     return (
-        <button className="w-full" onClick={prop.onClick} disabled={prop.desabilitar}>
+        <button role={prop.role} className="w-full" onClick={prop.onClick} disabled={prop.desabilitar}>
             <div className={`${CSS_BASICO} ${prop.css} ${prop.desabilitar ? "opacity-40" : ""}`}>
                 {prop.titulo}
             </div>

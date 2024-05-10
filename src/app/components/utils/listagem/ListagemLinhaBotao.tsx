@@ -7,7 +7,7 @@ interface ListagemLinhaBotaoProp {
 export default function ListagemLinhaBotao(prop : ListagemLinhaBotaoProp) {
     
     return (
-        <button className={`p-2 ${prop.css}`} onClick={() => prop.onClick()}>
+        <button role="ListagemLinhaBotao" className={`p-2 ${prop.css}`} onClick={() => prop.onClick()}>
             {prop.icon}
         </button>
     )
