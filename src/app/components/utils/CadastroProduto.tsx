@@ -37,6 +37,7 @@ export default function CadastroProduto(prop: ProdutoCadastroProp) {
 
             <div className="h-[350px] w-[350px] p-5">
                 <Input
+                    role="nome-produto"
                     label="Nome*:"
                     placeHolder="Informe o nome do produto"
                     valor={nome}
@@ -46,6 +47,7 @@ export default function CadastroProduto(prop: ProdutoCadastroProp) {
                 <br />
 
                 <TextArea
+                    role="produto-comentario"
                     label="Comentário:"
                     placeHolder="Atribua um comentário"
                     valor={comentario}
@@ -54,6 +56,7 @@ export default function CadastroProduto(prop: ProdutoCadastroProp) {
 
 
                 <Numerico
+                    role="produto-quantidade"
                     label="Quantidade*:"
                     placeHolder="1.000"
                     valor={quantidade}
@@ -68,7 +71,9 @@ export default function CadastroProduto(prop: ProdutoCadastroProp) {
                         prop.onClose()
                     }} />
 
-                <Botao titulo="Confirmar item"
+                <Botao 
+                    role="produto-confirmar"
+                    titulo="Confirmar item"
                     css="bg-neutro-400 text-branco"
                     onClick={() => {
                         const p = new Produto(produto.id, quantidade, nome, comentario)

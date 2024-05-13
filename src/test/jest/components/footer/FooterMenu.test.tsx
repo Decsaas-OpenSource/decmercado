@@ -10,9 +10,9 @@ describe("FooterMenu", () => {
             <FooterMenu />
         )
 
-        const link = screen.getAllByRole('link');
-        expect(link[0].getAttribute('href')).toBe('/app/home');
-        expect(link[1].getAttribute('href')).toBe('/app/carrinho');
+        const link = screen.getByRole('botao-home');
+        expect(screen.getByRole('botao-home').getAttribute('href')).toBe('/app/home');
+        expect(screen.getByRole('botao-carrinho').getAttribute('href')).toBe('/app/carrinho');
     })
 
     test("focoHome", () => {

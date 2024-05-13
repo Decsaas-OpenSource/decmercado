@@ -10,12 +10,12 @@ describe("ListagemLinhaOnClick", () => {
         const item = new Produto("id", 5, "produto teste", "comentario")
 
         render(
-            <ListagemLinhaOnClick item={item} onClick={handleOnClick}>
+            <ListagemLinhaOnClick role='listagem-linha' item={item} onClick={handleOnClick}>
                 conteudo extra
             </ListagemLinhaOnClick>
         )
 
-        const elemento = screen.getByRole("ListagemLinhaOnClick")
+        const elemento = screen.getByRole("listagem-linha-click")
 
         fireEvent.click(elemento)
 

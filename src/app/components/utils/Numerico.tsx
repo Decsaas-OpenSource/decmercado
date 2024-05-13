@@ -1,4 +1,5 @@
 interface NumericoProp {
+    role?: string, 
     label: string,
     placeHolder: string,
     valor: number,
@@ -12,6 +13,7 @@ export default function Numerico(prop: NumericoProp) {
             <label className="text-bold-paragrafo">{prop.label}</label>
             <br />
             <input
+                role={prop.role}
                 aria-label={prop.label}
                 className="w-full border-b-2 rounded-none border-x-primario-500 text-regular-paragrafo
                             focus:outline-none pl-2 pb-1"

@@ -1,6 +1,7 @@
 import { CSS_LISTAGEM_LINHA } from "./Listagem"
 
 interface ListagemLinhaOnClickProp {
+    role?: string,
     item: ListagemDTO,
     onClick: (item: ListagemDTO) => void
     children: React.ReactNode
@@ -9,7 +10,7 @@ interface ListagemLinhaOnClickProp {
 export default function ListagemLinhaOnClick(prop: ListagemLinhaOnClickProp) {
 
     return (
-        <div role="ListagemLinhaOnClick" className={CSS_LISTAGEM_LINHA} onClick={() => { prop.onClick(prop.item) }}>
+        <div role={`${prop.role}-click`} className={CSS_LISTAGEM_LINHA} onClick={() => { prop.onClick(prop.item) }}>
             {prop.children}
         </div>
     )

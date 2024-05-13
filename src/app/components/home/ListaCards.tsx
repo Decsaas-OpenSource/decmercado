@@ -30,7 +30,7 @@ export default function ListaCards(prop: ListaCardsProp) {
             <div className="flex overflow-x-scroll whitespace-nowrap">
                 {
                     TAMANHO_LISTAGEM === NENHUM_ITEM_ADICIONADO ?
-                        <Card.Root urlRedirect={`${URL_LISTA}nova`}>
+                        <Card.Root role="card-nova-lista" urlRedirect={`${URL_LISTA}nova`}>
                             <Card.BodyMinhasListas>
                                 <Card.ConteudoLista
                                     titulo="Adicione uma lista"
@@ -43,7 +43,7 @@ export default function ListaCards(prop: ListaCardsProp) {
 
                 {prop.verMais ?
                     (
-                        <Link href={URL_LISTA} className="flex w-fit mb-3 mr-3" key={"vermais"}>
+                        <Link role="card-ver-mais-listas" href={URL_LISTA} className="flex w-fit mb-3 mr-3" key={"vermais"}>
                             <div className="flex items-center rounded-lg bg-primario-500 
                                     w-20 justify-center shadow-default">
                                 <div className="p-2 rounded-md h-[90px] content-center">

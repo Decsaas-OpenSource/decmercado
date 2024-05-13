@@ -94,9 +94,9 @@ export default function Home() {
 
                 <ListaCards listas={listas} verMais={listaVerMais}>
                     {
-                        listas.map((item) => {
+                        listas.map((item, i) => {
                             return (
-                                <Card.Root key={item.id} urlRedirect={`${URL_LISTA}${item.id}`}>
+                                <Card.Root role={`card-lista-${i}`} key={item.id} urlRedirect={`${URL_LISTA}${item.id}`}>
                                     <Card.BodyMinhasListas>
                                         <Card.ConteudoLista
                                             titulo={item.descricao}

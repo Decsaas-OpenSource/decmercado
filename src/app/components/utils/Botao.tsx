@@ -43,6 +43,7 @@ export function Botao(prop: BotaoProp) {
 }
 
 interface BotaoIconeProp {
+    role?: string,
     css?: string,
     cssLink?: string,
     desabilitar?: boolean
@@ -53,7 +54,7 @@ interface BotaoIconeProp {
 export function BotaoComIcone(prop: BotaoIconeProp) {
 
     return (
-        <button className="w-full" onClick={prop.onClick} disabled={prop.desabilitar}>
+        <button role={prop.role} className="w-full" onClick={prop.onClick} disabled={prop.desabilitar}>
             <div className={`${CSS_BASICO} ${prop.css} ${prop.desabilitar ? "opacity-40" : ""}`}>
                 {prop.icon}
             </div>

@@ -24,10 +24,10 @@ describe("ListagemLinhaBotaoCheck", () => {
         const handleOnClick = jest.fn();
 
         render(
-            <ListagemLinhaBotaoCheck onClick={handleOnClick}/>
+            <ListagemLinhaBotaoCheck role='botao' onClick={handleOnClick}/>
         )
 
-        const elemento = screen.getByRole("ListagemLinhaBotao")
+        const elemento = screen.getByRole("botao-check")
 
         fireEvent.click(elemento)
 

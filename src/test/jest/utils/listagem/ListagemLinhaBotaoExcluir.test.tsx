@@ -20,10 +20,10 @@ describe("ListagemLinhaBotaoExcluir", () => {
         const p = new ProdutoNullObject()
 
         render(
-            <ListagemLinhaBotaoExcluir item={p} onClickSim={()=> {}} />
+            <ListagemLinhaBotaoExcluir role='botao' item={p} onClickSim={()=> {}} />
         )
 
-        const elemento = screen.getByRole("ListagemLinhaBotao")
+        const elemento = screen.getByRole("botao-excluir")
 
         fireEvent.click(elemento)
 
@@ -37,10 +37,10 @@ describe("ListagemLinhaBotaoExcluir", () => {
         const p = new ProdutoNullObject()
 
         render(
-            <ListagemLinhaBotaoExcluir item={p} onClickSim={handleOnClick} />
+            <ListagemLinhaBotaoExcluir role='botao' item={p} onClickSim={handleOnClick} />
         )
 
-        const elemento = screen.getByRole("ListagemLinhaBotao")
+        const elemento = screen.getByRole("botao-excluir")
 
         fireEvent.click(elemento)
 
