@@ -75,8 +75,8 @@ export class CarrinhoHelper {
     }
 
     static async validaDetalhesProduto(page: Page, ...mensagens: string[]) {
-        mensagens.forEach(async (mensagem, i) => {
-            await expect(page.getByTestId(i.toString())).toHaveText(mensagem);
-        })
+        for (var i = 0; i < mensagens.length; i++) {
+            await expect(page.getByTestId(i.toString())).toHaveText(mensagens[i]);
+        }
     }
 }

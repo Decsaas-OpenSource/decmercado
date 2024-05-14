@@ -27,7 +27,7 @@ export default function CadastroProduto(prop: ProdutoCadastroProp) {
             setQuantidade(prop.produto?.quantidade)
             setComentario(prop.produto?.comentario)
         }
-    }, [prop.exibir])
+    }, [prop.produto, prop.exibir])
 
     return (
         <SubJanela exibir={prop.exibir}>

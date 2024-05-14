@@ -45,7 +45,7 @@ export default function CadastroCompartilhado(prop: CadastroCompartilhadoProp) {
     useEffect(() => {
         storage.carregar()
         setLista(storage.procurar(urlParametro.id))
-    }, [storage])
+    }, [setLista, urlParametro.id, storage])
 
     useEffect(() => {
         setNome(lista.descricao)
