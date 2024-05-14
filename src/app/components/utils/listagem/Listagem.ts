@@ -3,7 +3,7 @@ import ListagemLinhaBotao from "./ListagemLinhaBotao";
 import ListagemLinhaRedirection from "./ListagemLinhaRedirection";
 import ListagemRoot from "./ListagemRoot";
 import ListagemLinhaConteudo from "./ListagemLinhaConteudo";
-import ListagemLinhaConteudoComentario from "./ListagemLinhaConteudoComentario";
+import { ListagemLinhaConteudoComentario, ListagemLinhaConteudoComentarioBotao } from "./ListagemLinhaConteudoComentario";
 import ListagemLinhaBotaoExcluir from "./ListagemLinhaBotaoExcluir";
 import ListagemLinha from "./ListagemLinha";
 import ListagemLinhaSemAcao from "./ListagemLinhaSemAcao";
@@ -16,6 +16,7 @@ export const Listagem = {
     Linha: ListagemLinha,
     LinhaConteudo: ListagemLinhaConteudo,
     LinhaComentario: ListagemLinhaConteudoComentario,
+    LinhaComentarioBotao: ListagemLinhaConteudoComentarioBotao,
 
     LinhaOnClick: ListagemLinhaOnClick,
     LinhaSemAcao: ListagemLinhaSemAcao,

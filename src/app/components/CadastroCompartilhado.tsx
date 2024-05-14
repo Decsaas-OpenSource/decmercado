@@ -45,7 +45,7 @@ export default function CadastroCompartilhado(prop: CadastroCompartilhadoProp) {
     useEffect(() => {
         storage.carregar()
         setLista(storage.procurar(urlParametro.id))
-    }, [storage])
+    }, [setLista, urlParametro.id, storage])
 
     useEffect(() => {
         setNome(lista.descricao)
@@ -65,6 +65,7 @@ export default function CadastroCompartilhado(prop: CadastroCompartilhadoProp) {
                 </Header.Conteudo>
                 <Header.Botao>
                     <BotaoComIcone
+                        role="excluir-cadastro"
                         icon={Remover} css="text-perigo-300"
                         onClick={() => {
                             setExibirModal(true)
@@ -74,6 +75,7 @@ export default function CadastroCompartilhado(prop: CadastroCompartilhadoProp) {
 
             <Body css="text-primario-500">
                 <Input
+                    role="nome-lista"
                     label="Nome*:"
                     placeHolder="Atribua um nome"
                     valor={nome}
@@ -88,6 +90,7 @@ export default function CadastroCompartilhado(prop: CadastroCompartilhadoProp) {
                 <DivisorSomenteTexto texto="Itens" />
 
                 <Listagem.Root
+                    roleVazia="lista-produtos-vazia"
                     mensagemVazio="Nenhum item adicionado"
                     exibirListagem={produtos.length > 0}>
                     {
@@ -100,13 +103,13 @@ export default function CadastroCompartilhado(prop: CadastroCompartilhadoProp) {
                                     corPrimaria="bg-primario-100"
                                     corSecundaria="bg-primario-200">
 
-                                    <Listagem.LinhaOnClick item={item} onClick={(e) => editarProduto(item)}>
-                                        <Listagem.LinhaConteudo item={item} comDecimais>
-                                            <Listagem.LinhaComentario comentario={item.comentario} />
+                                    <Listagem.LinhaOnClick role={`produto-${i}`}  item={item} onClick={(e) => editarProduto(item)}>
+                                        <Listagem.LinhaConteudo role={`produto-${i}`} item={item} comDecimais>
+                                            <Listagem.LinhaComentario role={`produto-${i}`} comentario={item.comentario} />
                                         </Listagem.LinhaConteudo>
                                     </Listagem.LinhaOnClick>
 
-                                    <Listagem.ListaBotaoExcluir item={item}
+                                    <Listagem.ListaBotaoExcluir role={`produto-${i}`} item={item}
                                         onClickSim={(produto) => {
                                             const produtosFiltrado = produtos.filter((p) => p.id != produto.id)
                                             lista.produtos = produtosFiltrado
@@ -122,7 +125,9 @@ export default function CadastroCompartilhado(prop: CadastroCompartilhadoProp) {
             </Body>
 
             <Footer.Root>
-                <Footer.Botao color="bg-neutro-400"
+                <Footer.Botao 
+                    role="adicionar-novo-produto"
+                    css="bg-neutro-400"
                     titulo="Adicionar novo item"
                     onClick={() => {
                         editarProduto(new ProdutoNullObject())

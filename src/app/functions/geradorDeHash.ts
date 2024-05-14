@@ -1,7 +1,10 @@
 import crypto from 'crypto';
 
 export function geradorDeHash() {
-  const currentDate = new Date().toISOString();
-  const hash = crypto.createHash('sha256').update(currentDate).digest('hex');
+  return geradorDeHashComParametro(new Date().toISOString());
+}
+
+export function geradorDeHashComParametro(valor: string) {
+  const hash = crypto.createHash('sha256').update(valor).digest('hex');
   return hash;
 }

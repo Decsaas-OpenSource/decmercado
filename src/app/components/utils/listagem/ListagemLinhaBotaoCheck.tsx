@@ -3,6 +3,7 @@ import ListagemLinhaBotao from "./ListagemLinhaBotao"
 import { useState } from "react"
 
 interface ListagemLinhaBotaoCheckProp {
+    role?: string, 
     onClick: (e: boolean) => void
     selecionado?: boolean
 }
@@ -21,12 +22,10 @@ export default function ListagemLinhaBotaoCheck(prop: ListagemLinhaBotaoCheckPro
         <>
             {
                 selecionado ?
-                    <ListagemLinhaBotao onClick={trocaEstado} css="text-branco" icon={Checked} />
+                    <ListagemLinhaBotao role={`${prop.role}-check`} onClick={trocaEstado} css="text-branco" icon={Checked} />
                     :
-                    <ListagemLinhaBotao onClick={trocaEstado} css="text-neutro-300" icon={Check} />
+                    <ListagemLinhaBotao role={`${prop.role}-check`} onClick={trocaEstado} css="text-neutro-300" icon={Check} />
             }
-
-
         </>
     )
 }

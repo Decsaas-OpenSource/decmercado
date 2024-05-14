@@ -1,4 +1,5 @@
 interface InputProp {
+    role?: string, 
     label: string,
     placeHolder: string,
     valor: string,
@@ -13,6 +14,8 @@ export default function Input(prop: InputProp) {
             <label className="text-bold-paragrafo">{prop.label}</label>
             <br />
             <input
+                role={prop.role}
+                aria-label={prop.label}
                 className="w-full border-b-2 rounded-none border-x-primario-500 text-regular-paragrafo
                             focus:outline-none pl-2 pb-1"
                 type="text"

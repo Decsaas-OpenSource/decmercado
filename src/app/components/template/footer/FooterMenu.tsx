@@ -11,10 +11,10 @@ export default function FooterMenu(prop: MenuFooterProp) {
 
     return (
         <div className="flex bg-primario-500 text-branco justify-center space-x-32 pb-7 pt-3">
-            <Link href={URL_HOME} className="content-center">
+            <Link role="botao-home" href={URL_HOME} className="content-center">
                 {prop.focoHome ? HomeSolid : Home}
             </Link>
-            <Link href={URL_CARRINHO} className="content-center">
+            <Link role="botao-carrinho" href={URL_CARRINHO} className="content-center">
                 {prop.focoCarrinho ? CarrinhoSolid : Carrinho}
             </Link>
         </div>

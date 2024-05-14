@@ -56,7 +56,7 @@ export default function EscolhaLista() {
                                         <Listagem.LinhaConteudo item={item} />
                                     </Listagem.LinhaSemAcao>
 
-                                    <Listagem.ListaBotaoCheck onClick={(selecionado) => {
+                                    <Listagem.ListaBotaoCheck role={`item-lista-${i}`} onClick={(selecionado) => {
                                         const escolhidosFiltrados = escolhidos.filter((f) => f.id != item.id)
 
                                         if (selecionado) escolhidosFiltrados?.push(item)
@@ -71,14 +71,28 @@ export default function EscolhaLista() {
             </Body>
 
             <Footer.Root>
-                <Footer.Botao color="bg-neutro-400"
+                <Footer.Botao css="bg-neutro-400"
+                    role="confirmar"
                     onClick={(e) => {
                         const meuCarrinho = storageMeuCarrinho.meuCarrinho
-                        const produtos: Produto[] = []
+                        var produtos: Produto[] = storageMeuCarrinho.meuCarrinho.paraComprar
 
                         escolhidos.map((listas: ListaDeMercado) => {
                             listas.produtos.map((p) => {
-                                produtos.push(p)
+                                const filtrado = produtos.filter((pp) => pp.descricao == p.descricao)
+                                if (filtrado.length == 0)
+                                    produtos.push(p)
+                                else {
+                                    if (filtrado.length > 1)
+                                        throw ("Não deveria ter 2 produtos com mesmo nome")
+
+                                    filtrado.map((pp) => {
+                                        p.acrescentaQuantidade(pp.quantidade)
+                                        p.concatenaComentario(pp.comentario)
+                                    })                                    
+                                    produtos = produtos.filter((pp) => filtrado[0].id != pp.id)
+                                    produtos.push(p)
+                                }
                             })
                         })
 

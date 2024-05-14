@@ -30,6 +30,7 @@ export default function MinhasListas() {
 
             <Body css="text-primario-500">
                 <Listagem.Root
+                    roleVazia="minhas-listas-vazia"
                     mensagemVazio="Nenhuma lista criada"
                     exibirListagem={listas.length > 0}>
                     {
@@ -42,11 +43,11 @@ export default function MinhasListas() {
                                     corPrimaria="bg-primario-100"
                                     corSecundaria="bg-primario-200">
 
-                                    <Listagem.LinhaRedirection item={item} urlBase={`${URL_LISTA}${item.id}`} >
-                                        <Listagem.LinhaConteudo item={item} />
+                                    <Listagem.LinhaRedirection role={`minha-lista-${i}`} urlBase={`${URL_LISTA}${item.id}`} >
+                                        <Listagem.LinhaConteudo role={`minha-lista-${i}`} item={item} />
                                     </Listagem.LinhaRedirection>
 
-                                    <Listagem.ListaBotaoExcluir item={item}
+                                    <Listagem.ListaBotaoExcluir role={`minha-lista-${i}`} item={item}
                                         onClickSim={(item: ListaDeMercado) => {
                                             storage.deletar(item)
                                             setListas(storage.todos)
@@ -60,7 +61,7 @@ export default function MinhasListas() {
             </Body>
 
             <Footer.Root>
-                <Footer.BotaoLink color="bg-neutro-400" href={`${URL_LISTA}nova`} titulo="Adicionar nova lista" />
+                <Footer.BotaoLink role="nova-lista-footer" css="bg-neutro-400" href={`${URL_LISTA}nova`} titulo="Adicionar nova lista" />
                 <Footer.Menu focoHome />
             </Footer.Root>
         </>

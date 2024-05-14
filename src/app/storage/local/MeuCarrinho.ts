@@ -1,6 +1,5 @@
 import MeuCarrinho from "@/app/model/MeuCarrinho"
 import DadosInterface from "../DadosInterface"
-import Produto from "@/app/model/Produto"
 import MeuCarrinhoNullObject from "@/app/model/nullObject/MeuCarrinhoNullObject";
 
 export default class StoregeMeuCarrinho implements DadosInterface<MeuCarrinho> {

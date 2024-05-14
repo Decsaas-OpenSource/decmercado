@@ -6,6 +6,7 @@ import { Listagem } from "./Listagem"
 import { Modal } from "../modal/Modal"
 
 interface ListagemLinhaBotaoExcluirProp {
+    role?: string, 
     item: ListagemDTO,
     onClickSim(item: ListagemDTO): void
 }
@@ -20,7 +21,7 @@ export default function ListagemLinhaBotaoExcluir(prop: ListagemLinhaBotaoExclui
 
     return (
         <>
-            <Listagem.ListaBotao onClick={() => abrirModal()} icon={Excluir} css="text-perigo-300" />
+            <Listagem.ListaBotao role={`${prop.role}-excluir`} onClick={() => abrirModal()} icon={Excluir} css="text-perigo-300" />
 
             <Modal.Root exibir={exibirModal} titulo="Atenção" >
                 <Modal.Mensagem mensagem={`Deseja realmente remover o '${prop.item.descricao}'?`} />

@@ -1,6 +1,7 @@
 import Link from "next/link"
 
 interface CardRootProp {
+    role?: string,
     children: React.ReactNode
     urlRedirect : string
 }
@@ -8,7 +9,7 @@ interface CardRootProp {
 export default function CardRoot(prop: CardRootProp) {
 
     return (
-        <Link href={prop.urlRedirect}>
+        <Link role={prop.role} href={prop.urlRedirect}>
             {prop.children}
         </Link>
     )

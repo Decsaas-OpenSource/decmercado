@@ -1,23 +1,24 @@
 import { Botao, BotaoLink } from "../../utils/Botao"
 
 interface FooterMenuBotoesLinkProp {
+    role?: string,
     titulo: string,
     href: string,
-    color: string,
-    css?: any
+    css: string,
+    desabilitar?: boolean
 }
 
 export function FooterMenuBotoesLink(prop: FooterMenuBotoesLinkProp) {
 
     return (
-        <BotaoLink href={prop.href} titulo={prop.titulo} css={`rounded-none h-[40px] ${prop.color} ${prop.css}`} />
+        <BotaoLink role={prop.role} href={prop.href} titulo={prop.titulo} css={`rounded-none h-[40px] ${prop.css}`} desabilitar={prop.desabilitar} />
     )
 }
 
 interface FooterMenuBotoesProp {
+    role?: string,
     titulo: string,
-    color: string,
-    css?: any
+    css: string,
     onClick: (e: any) => void
 }
 
@@ -25,6 +26,6 @@ interface FooterMenuBotoesProp {
 export function FooterMenuBotoes(prop: FooterMenuBotoesProp) {
 
     return (
-        <Botao titulo={prop.titulo} css={`rounded-none h-[40px] ${prop.color} ${prop.css}`} onClick={prop.onClick} />
+        <Botao role={prop.role} titulo={prop.titulo} css={`rounded-none h-[40px] ${prop.css}`} onClick={prop.onClick} />
     )
 }

@@ -35,7 +35,7 @@ export default function ReceitasCards(prop: ReceitasCardsProp) {
                 <span className="w-full text-bold-sub-titulo text-neutro-800">
                     Minhas receitas
                 </span>
-                <BotaoLink titulo="Nova receita" href={`${URL_RECEITA}nova`} css="bg-secundario-500 w-max" />
+                <BotaoLink role="BotaoLinkReceitasCards" titulo="Nova receita" href={`${URL_RECEITA}nova`} css="bg-secundario-500 w-max" />
             </div>
 
             <div className={`flex flex-wrap whitespace-pre-wrap ${TAMANHO_LISTAGEM >= TAMANHO_PARA_CENTRALIZAR ? 'place-content-between' : ''}`}>
@@ -44,14 +44,14 @@ export default function ReceitasCards(prop: ReceitasCardsProp) {
                         <Card.BodyMinhasReceitas>
                             <Card.ConteudoReceita
                                 titulo="Adicione uma nova receita" />
-                            <Card.IconeReceita icon={Adicionar} />
+                            <Card.IconeReceita />
                         </Card.BodyMinhasReceitas>
                     </Card.Root> :
                     prop.children
                 }
 
                 {prop.verMais ? (
-                    (<BotaoLink href={URL_RECEITA} css="bg-secundario-500" titulo="Ver mais" cssLink="w-full" />)
+                    (<BotaoLink role="BotaoLinkReceitasCardsVerMais" href={URL_RECEITA} css="bg-secundario-500" titulo="Ver mais" cssLink="w-full" />)
                 ) : false}
             </div>
         </div>

@@ -38,3 +38,13 @@ next-env.d.ts
 /public/sw.js
 /public/sw.js.map
 /public/work*
+
+.swc
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/

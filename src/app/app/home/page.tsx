@@ -1,7 +1,6 @@
 "use client"
 
-import Link from "next/link";
-import { CarrinhoCard, ListaBullet, Sobre } from "../../icons";
+import { ListaBullet, Sobre } from "../../icons";
 import { Header } from "@/app/components/template/header/Header";
 import { Footer } from "@/app/components/template/footer/Footer";
 
@@ -20,6 +19,8 @@ import StoregeMeuCarrinho from "@/app/storage/local/MeuCarrinho";
 import Produto from "@/app/model/Produto";
 import SubJanela from "@/app/components/utils/subJanela/SubJanela";
 import { Botao, BotaoComIcone } from "@/app/components/utils/Botao";
+
+import { version } from "../../../../package.json";
 
 export default function Home() {
 
@@ -81,12 +82,13 @@ export default function Home() {
             </Header.Root>
 
             <Body>
-                <Card.Root urlRedirect={URL_CARRINHO}>
+                <Card.Root urlRedirect={URL_CARRINHO}
+                    role="card-meu-carrinho">
                     <Card.BodyMeuCarrinho>
                         <Card.ConteudoCarrinho titulo="Meu Carrinho"
                             totalNoCarrinho={produtosNoCarrinho.length}
                             totalParaComprar={produtosParaComprar.length} />
-                        <Card.IconeCarrinho icon={CarrinhoCard} />
+                        <Card.IconeCarrinho />
                     </Card.BodyMeuCarrinho>
                 </Card.Root>
 
@@ -94,9 +96,9 @@ export default function Home() {
 
                 <ListaCards listas={listas} verMais={listaVerMais}>
                     {
-                        listas.map((item) => {
+                        listas.map((item, i) => {
                             return (
-                                <Card.Root key={item.id} urlRedirect={`${URL_LISTA}${item.id}`}>
+                                <Card.Root role={`card-lista-${i}`} key={item.id} urlRedirect={`${URL_LISTA}${item.id}`}>
                                     <Card.BodyMinhasListas>
                                         <Card.ConteudoLista
                                             titulo={item.descricao}
@@ -133,7 +135,7 @@ export default function Home() {
             <SubJanela exibir={exibirModalSobre}>
                 <div className="text-center bg-primario-500 text-branco h-60 w-80 content-center">
                     <div className="text-bold-titulo font-['Satisfy'] text-[60px] ">
-                        DecMercado
+                        DecMercado {version}
                     </div>
 
                     <div className="flex">
@@ -142,6 +144,8 @@ export default function Home() {
                             <div className="text-regular-label">NextJS</div>
                             <div className="text-regular-label">Tailwind</div>
                             <div className="text-regular-label">PWA</div>
+                            <div className="text-regular-label">Jest</div>
+                            <div className="text-regular-label">Playwright</div>
                         </div>
 
                         <div className="w-full content-end">

@@ -22,7 +22,7 @@ export function CardConteudoCarrinho(prop: CardConteudoCarrinhoProd) {
                 {prop.titulo}
             </div>
 
-            <div className="text-regular-label text-branco">
+            <div role="cart-conteudo-carrinho" className="text-regular-label text-branco">
                 {mensagemTotalNoCarrinho}
             </div>
 
