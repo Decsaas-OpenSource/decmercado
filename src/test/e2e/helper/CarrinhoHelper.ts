@@ -75,8 +75,8 @@ export class CarrinhoHelper {
     }
 
     static async validaDetalhesProduto(page: Page, ...mensagens: string[]) {
-        mensagens.map(async (mensagem, i) => {
-            await expect(page.getByTestId(i.toString())).toHaveText(mensagem)
+        mensagens.forEach(async (mensagem, i) => {
+            await expect(page.getByTestId(i.toString())).toHaveText(mensagem);
         })
     }
 }
