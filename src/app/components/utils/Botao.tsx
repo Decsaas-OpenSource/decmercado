@@ -18,7 +18,10 @@ export function BotaoLink(prop: BotaoLinkProp) {
     return (
         <Link role={prop.role} href={prop.href}
             aria-disabled={prop.desabilitar} style={{ pointerEvents: stylePoint, touchAction: stylePoint }}
-            className={`${prop.cssLink}`} >
+            className={`${prop.cssLink}`} onClick={(e) => {
+                if (prop.desabilitar)
+                    e.preventDefault()
+            }} >
             <div className={`${CSS_BASICO} ${prop.css} ${prop.desabilitar ? "line-through" : ""}`}>
                 {prop.titulo}
             </div>
