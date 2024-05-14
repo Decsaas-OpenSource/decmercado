@@ -18,7 +18,7 @@ export class ProdutoHelper {
     }
 
     static async criarNovo(page: Page) {
-        await page.getByTestId("FooterMenuBotoes").click()
+        await page.getByTestId("adicionar-novo-produto").click()
     }
 
     static async confirmar(page: Page) {

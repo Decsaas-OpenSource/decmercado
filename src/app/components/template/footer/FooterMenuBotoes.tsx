@@ -1,6 +1,7 @@
 import { Botao, BotaoLink } from "../../utils/Botao"
 
 interface FooterMenuBotoesLinkProp {
+    role?: string,
     titulo: string,
     href: string,
     css: string
@@ -9,11 +10,12 @@ interface FooterMenuBotoesLinkProp {
 export function FooterMenuBotoesLink(prop: FooterMenuBotoesLinkProp) {
 
     return (
-        <BotaoLink role="FooterMenuBotoesLink" href={prop.href} titulo={prop.titulo} css={`rounded-none h-[40px] ${prop.css}`} />
+        <BotaoLink role={prop.role} href={prop.href} titulo={prop.titulo} css={`rounded-none h-[40px] ${prop.css}`} />
     )
 }
 
 interface FooterMenuBotoesProp {
+    role?: string,
     titulo: string,
     css: string,
     onClick: (e: any) => void
@@ -23,6 +25,6 @@ interface FooterMenuBotoesProp {
 export function FooterMenuBotoes(prop: FooterMenuBotoesProp) {
 
     return (
-        <Botao role="FooterMenuBotoes" titulo={prop.titulo} css={`rounded-none h-[40px] ${prop.css}`} onClick={prop.onClick} />
+        <Botao role={prop.role} titulo={prop.titulo} css={`rounded-none h-[40px] ${prop.css}`} onClick={prop.onClick} />
     )
 }

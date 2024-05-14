@@ -9,12 +9,12 @@ describe("ListagemLinhaRedirection", () => {
         const item = new Produto("id", 5, "produto teste", "comentario")
 
         render(
-            <ListagemLinhaRedirection urlBase='/teste' >
+            <ListagemLinhaRedirection role='ListagemLinhaRedirection' urlBase='/teste' >
                 conteudo extra
             </ListagemLinhaRedirection>
         )
 
-        expect(screen.getByRole("link").getAttribute('href')).toBe('/teste');
+        expect(screen.getByRole("ListagemLinhaRedirection-link").getAttribute('href')).toBe('/teste');
         expect(screen.getByText("conteudo extra")).toBeDefined()
     })
 

@@ -81,7 +81,8 @@ export default function Home() {
             </Header.Root>
 
             <Body>
-                <Card.Root urlRedirect={URL_CARRINHO}>
+                <Card.Root urlRedirect={URL_CARRINHO}
+                    role="card-meu-carrinho">
                     <Card.BodyMeuCarrinho>
                         <Card.ConteudoCarrinho titulo="Meu Carrinho"
                             totalNoCarrinho={produtosNoCarrinho.length}

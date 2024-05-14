@@ -8,6 +8,11 @@ export async function criaLista(page :any, nomeMinhaLista: string) {
     await ListaDeMercadoHelper.criarProduto(page, "produto B", "comentario B", "10")
 }
 
+export async function criaListaComTresProdutos(page :any, nomeMinhaLista: string) {
+    await criaLista(page, nomeMinhaLista)
+    await ListaDeMercadoHelper.criarProduto(page, "produto C", "comentario C", "15")
+}
+
 export async function criaQuatroListas(page: any) {
     await criaLista(page, "minha-lista")
     await criaLista(page, "minha-lista2")

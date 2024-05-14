@@ -61,7 +61,7 @@ export default function MinhasListas() {
             </Body>
 
             <Footer.Root>
-                <Footer.BotaoLink css="bg-neutro-400" href={`${URL_LISTA}nova`} titulo="Adicionar nova lista" />
+                <Footer.BotaoLink role="nova-lista-footer" css="bg-neutro-400" href={`${URL_LISTA}nova`} titulo="Adicionar nova lista" />
                 <Footer.Menu focoHome />
             </Footer.Root>
         </>

@@ -125,7 +125,9 @@ export default function CadastroCompartilhado(prop: CadastroCompartilhadoProp) {
             </Body>
 
             <Footer.Root>
-                <Footer.Botao css="bg-neutro-400"
+                <Footer.Botao 
+                    role="adicionar-novo-produto"
+                    css="bg-neutro-400"
                     titulo="Adicionar novo item"
                     onClick={() => {
                         editarProduto(new ProdutoNullObject())

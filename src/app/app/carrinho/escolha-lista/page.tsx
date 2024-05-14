@@ -56,7 +56,7 @@ export default function EscolhaLista() {
                                         <Listagem.LinhaConteudo item={item} />
                                     </Listagem.LinhaSemAcao>
 
-                                    <Listagem.ListaBotaoCheck onClick={(selecionado) => {
+                                    <Listagem.ListaBotaoCheck role={`item-lista-${i}`} onClick={(selecionado) => {
                                         const escolhidosFiltrados = escolhidos.filter((f) => f.id != item.id)
 
                                         if (selecionado) escolhidosFiltrados?.push(item)
@@ -72,6 +72,7 @@ export default function EscolhaLista() {
 
             <Footer.Root>
                 <Footer.Botao css="bg-neutro-400"
+                    role="confirmar"
                     onClick={(e) => {
                         const meuCarrinho = storageMeuCarrinho.meuCarrinho
                         const produtos: Produto[] = []

@@ -15,7 +15,7 @@ export class MinhasListasHelper {
 
     static async verificaListasVaziasNaoExibe(page: Page) {
         await expect(page.getByTestId("titulo-pagina")).toHaveText("Minhas listas");
-        expect(page.getByTestId("minhas-listas-vazia")).not.toBeVisible()
+        await expect(page.getByTestId("minhas-listas-vazia")).not.toBeVisible()
     }
 
     static async verificaTitulo(page: Page) {
@@ -24,8 +24,8 @@ export class MinhasListasHelper {
 
     static async verificaCriacaoNovaLista(page: Page) {
         await expect(page.getByTestId("nome-lista")).toHaveValue("Nova lista");
-        expect(page.getByTestId("lista-produtos-vazia")).toBeVisible()
-        expect(page).toHaveURL("/app/listas/nova")
+        await expect(page.getByTestId("lista-produtos-vazia")).toBeVisible()
+        await expect(page).toHaveURL("/app/listas/nova")
     }
 
     static async excluirListaDadoIndice(page: Page, indice: number) {
@@ -38,6 +38,6 @@ export class MinhasListasHelper {
     }
 
     static async criarNova(page: Page) {
-        await page.getByTestId("FooterMenuBotoesLink").click()
+        await page.getByTestId("nova-lista-footer").click()
     }
 }

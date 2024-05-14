@@ -49,7 +49,7 @@ describe("ListaCards", () => {
             <ListaCards listas={[lista]} verMais> conteudo </ListaCards>
         )
 
-        expect(screen.getByRole("link")).toBeDefined()
+        expect(screen.getByRole("card-ver-mais-listas")).toBeDefined()
         expect(screen.getByText("Ver mais")).toBeDefined()
     })
 

@@ -8,7 +8,7 @@ describe("FooterMenuBotoes", () => {
         const handleOnClick = jest.fn();
 
         render(
-            <FooterMenuBotoes css='bg-red' titulo="Meu botão" onClick={handleOnClick} />
+            <FooterMenuBotoes role='FooterMenuBotoes' css='bg-red' titulo="Meu botão" onClick={handleOnClick} />
         )
 
         const elemento = screen.getByRole("FooterMenuBotoes")
@@ -23,7 +23,7 @@ describe("FooterMenuBotoes", () => {
     test("Link - Confirma href", () => {
 
         render(
-            <FooterMenuBotoesLink css='bg-red' titulo="Meu botão" href='/app/outroLugar' />
+            <FooterMenuBotoesLink role='FooterMenuBotoesLink' css='bg-red' titulo="Meu botão" href='/app/outroLugar' />
         )
 
         const elemento = screen.getByRole("FooterMenuBotoesLink")

@@ -91,7 +91,7 @@ export default function MeuCarrinho() {
                                         <Listagem.LinhaConteudo item={item} comDecimais />
                                     </Listagem.LinhaSemAcao>
 
-                                    <Listagem.ListaBotaoCheck selecionado onClick={() => {
+                                    <Listagem.ListaBotaoCheck role={`item-carrinho-${i}`} selecionado onClick={() => {
                                         const novosProdutosParaComprar = [...produtosParaComprar, item]
                                         const novosProdutosNoCarrinho: Produto[] = produtosNoCarrinho.filter((l) => l.id != item.id)
                                         salvarStorage(novosProdutosNoCarrinho, novosProdutosParaComprar)
@@ -123,7 +123,7 @@ export default function MeuCarrinho() {
                                         <Listagem.LinhaConteudo item={item} comDecimais />
                                     </Listagem.LinhaSemAcao>
 
-                                    <Listagem.ListaBotaoCheck onClick={() => {
+                                    <Listagem.ListaBotaoCheck role={`item-compra-${i}`} onClick={() => {
                                         const novosProdutosNoCarrinho = [...produtosNoCarrinho, item]
                                         const novosProdutosParaComprar: Produto[] = produtosParaComprar.filter((l) => l.id != item.id)
                                         salvarStorage(novosProdutosNoCarrinho, novosProdutosParaComprar)
@@ -136,7 +136,9 @@ export default function MeuCarrinho() {
             </Body>
 
             <Footer.Root>
-                <Footer.BotaoLink css="bg-alerta-200 text-neutro-500"
+                <Footer.BotaoLink 
+                    role="importar-lista"
+                    css="bg-alerta-200 text-neutro-500"
                     href={URL_CARRINHO_ESCOLHA_LISTA}
                     titulo="Selecionar lista de compras" />
                 <Footer.Menu focoCarrinho />

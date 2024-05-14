@@ -15,11 +15,11 @@ export class ListaDeMercadoHelper {
     }
 
     static async verificaListaDeProdutoVazia(page: Page) {
-        expect(page.getByTestId("lista-produtos-vazia")).toBeVisible()
+        await expect(page.getByTestId("lista-produtos-vazia")).toBeVisible()
     }
 
     static async verificaListaDeProdutoNaoEstaVazia(page: Page) {
-        expect(page.getByTestId("lista-produtos-vazia")).not.toBeVisible()
+        await expect(page.getByTestId("lista-produtos-vazia")).not.toBeVisible()
     }
 
     static async verificaNomeDaLista(page: Page, nomeDaLista: string) {
@@ -40,7 +40,7 @@ export class ListaDeMercadoHelper {
 
     static async verificaListaInicializacao(page: Page) {
         await expect(page.getByTestId("titulo-pagina")).toHaveText("Minhas listas");
-        expect(page.getByTestId("minhas-listas-vazia")).toBeVisible()
+        await expect(page.getByTestId("minhas-listas-vazia")).toBeVisible()
     }
 
     static async criarProduto(page: Page, nomeProduto: string, comentario: string, quantidade: string) {
