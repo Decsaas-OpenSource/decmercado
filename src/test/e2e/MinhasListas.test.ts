@@ -1,9 +1,9 @@
 import { test } from '@playwright/test';
-import { criaQuatroListas } from './env/ambienteListas';
+import { criarQuatroListas } from './env/ambienteListas';
 import { MinhasListasHelper } from './helper/MinhasListasHelper';
 
 test.beforeEach(async ({ page }) => {
-    await criaQuatroListas(page)
+    await criarQuatroListas(page)
 })
 
 test('deve mostrar todas as listas', async ({ page }) => {

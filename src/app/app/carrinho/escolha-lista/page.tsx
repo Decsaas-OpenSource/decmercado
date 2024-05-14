@@ -75,11 +75,24 @@ export default function EscolhaLista() {
                     role="confirmar"
                     onClick={(e) => {
                         const meuCarrinho = storageMeuCarrinho.meuCarrinho
-                        const produtos: Produto[] = []
+                        var produtos: Produto[] = storageMeuCarrinho.meuCarrinho.paraComprar
 
                         escolhidos.map((listas: ListaDeMercado) => {
                             listas.produtos.map((p) => {
-                                produtos.push(p)
+                                const filtrado = produtos.filter((pp) => pp.descricao == p.descricao)
+                                if (filtrado.length == 0)
+                                    produtos.push(p)
+                                else {
+                                    if (filtrado.length > 1)
+                                        throw ("Não deveria ter 2 produtos com mesmo nome")
+
+                                    filtrado.map((pp) => {
+                                        p.acrescentaQuantidade(pp.quantidade)
+                                        p.concatenaComentario(pp.comentario)
+                                    })                                    
+                                    produtos = produtos.filter((pp) => filtrado[0].id != pp.id)
+                                    produtos.push(p)
+                                }
                             })
                         })
 

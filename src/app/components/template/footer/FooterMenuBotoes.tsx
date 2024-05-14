@@ -4,13 +4,14 @@ interface FooterMenuBotoesLinkProp {
     role?: string,
     titulo: string,
     href: string,
-    css: string
+    css: string,
+    desabilitar?: boolean
 }
 
 export function FooterMenuBotoesLink(prop: FooterMenuBotoesLinkProp) {
 
     return (
-        <BotaoLink role={prop.role} href={prop.href} titulo={prop.titulo} css={`rounded-none h-[40px] ${prop.css}`} />
+        <BotaoLink role={prop.role} href={prop.href} titulo={prop.titulo} css={`rounded-none h-[40px] ${prop.css}`} desabilitar={prop.desabilitar} />
     )
 }
 

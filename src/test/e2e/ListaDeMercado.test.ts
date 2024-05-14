@@ -1,5 +1,5 @@
 import { Page, test } from '@playwright/test';
-import { criaLista } from './env/ambienteListas';
+import { criarLista } from './env/ambienteListas';
 import { ListaDeMercadoHelper } from './helper/ListaDeMercadoHelper';
 import { MinhasListasHelper } from './helper/MinhasListasHelper';
 import { ProdutoHelper } from './helper/Produto';
@@ -27,7 +27,7 @@ test('deve criar uma lista com dois produtos', async ({ page }) => {
 });
 
 test('deve conseguir editar uma lista', async ({ page }) => {
-    await criaLista(page, "minha-lista")
+    await criarLista(page, "minha-lista")
 
     selecionaUmaListaParaEdicao(page, 0)
 
@@ -42,7 +42,7 @@ test('deve conseguir editar uma lista', async ({ page }) => {
 });
 
 test('deve editar o segundo produto de uma lista com dois produtos', async ({ page }) => {
-    await criaLista(page, "minha-lista")
+    await criarLista(page, "minha-lista")
 
     selecionaUmaListaParaEdicao(page, 0)
 
@@ -63,7 +63,7 @@ test('deve editar o segundo produto de uma lista com dois produtos', async ({ pa
 });
 
 test('deve excluir o produto A de uma lista', async ({ page }) => {
-    await criaLista(page, "minha-lista")
+    await criarLista(page, "minha-lista")
 
     selecionaUmaListaParaEdicao(page, 0)
 
@@ -75,7 +75,7 @@ test('deve excluir o produto A de uma lista', async ({ page }) => {
 });
 
 test('deve excluir a propria lista', async ({ page }) => {
-    await criaLista(page, "minha-lista")
+    await criarLista(page, "minha-lista")
 
     selecionaUmaListaParaEdicao(page, 0)
 

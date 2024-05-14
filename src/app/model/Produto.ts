@@ -1,5 +1,6 @@
-export default class Produto implements ListagemDTO {
+const QUEBRA_DE_LINHA = "\r";
 
+export default class Produto implements ListagemDTO {
     #id: string;
     #quantidade: number;
     #descricao: string;
@@ -28,12 +29,16 @@ export default class Produto implements ListagemDTO {
         return this.#comentario
     }
 
+    get comentarioDetalhes() {
+        return this.#comentario.indexOf(QUEBRA_DE_LINHA) > 0
+    }
+
     toJSON() {
         return {
             id: this.#id,
             descricao: this.#descricao,
             quantidade: this.#quantidade,
-            comentario: this.#comentario
+            comentario: this.#comentario,
         }
     }
 
@@ -44,5 +49,12 @@ export default class Produto implements ListagemDTO {
             produtoParaConversao.descricao,
             produtoParaConversao.comentario
         )
+    }
+
+    concatenaComentario(comentario: string) {
+        this.#comentario += QUEBRA_DE_LINHA + comentario
+    }
+    acrescentaQuantidade(quantidade: number) {
+        this.#quantidade += quantidade
     }
 }

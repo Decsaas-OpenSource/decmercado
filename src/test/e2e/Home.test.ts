@@ -3,7 +3,7 @@ import { HomeHelper } from './helper/HomeHelper';
 import { CarrinhoHelper } from './helper/CarrinhoHelper';
 import { MinhasListasHelper } from './helper/MinhasListasHelper';
 import { ListaDeMercadoHelper } from './helper/ListaDeMercadoHelper';
-import { criaLista, criaListaComTresProdutos, criaQuatroListas } from './env/ambienteListas';
+import { criarLista, criarListaComTresProdutos, criarQuatroListas } from './env/ambienteListas';
 
 test.beforeEach(async ({ page }) => {
     await HomeHelper.abrePagina(page)
@@ -19,14 +19,16 @@ test('deve validar que o card do carrinho esta vazio', async ({ page }) => {
 });
 
 test('deve validar que o card do carrinho esta em andamento', async ({ page }) => {
-    await criaListaComTresProdutos(page, "minha-lista")
+    await criarListaComTresProdutos(page, "minha-lista")
     await CarrinhoHelper.abrePagina(page)
-    await CarrinhoHelper.importarLista(page, 0)
+    await CarrinhoHelper.importarLista(page)
+    await CarrinhoHelper.importarListaSelecionar(page, 0)
+    await CarrinhoHelper.importarListaConfirmar(page)
+
     await CarrinhoHelper.selecionaItemCompra(page, 0)
     await CarrinhoHelper.selecionaItemCompra(page, 1)
-
+    
     await HomeHelper.abrePagina(page)
-
     await HomeHelper.verificarCardCarrinhoEmAndamento(page)
 });
 
@@ -41,7 +43,7 @@ test('deve abrir pagina de nova lista (card)', async ({ page }) => {
 });
 
 test('deve abrir pagina de edicao de uma lista', async ({ page }) => {
-    await criaLista(page, "minha-lista-da-home")
+    await criarLista(page, "minha-lista-da-home")
 
     await HomeHelper.abrePagina(page)
     await HomeHelper.editarLista(page, 0)
@@ -51,7 +53,7 @@ test('deve abrir pagina de edicao de uma lista', async ({ page }) => {
 });
 
 test('deve abrir pagina de ver mais (listas)', async ({ page }) => {
-    await criaQuatroListas(page)
+    await criarQuatroListas(page)
 
     await HomeHelper.abrePagina(page)
     await HomeHelper.verMaisListas(page)

@@ -13,9 +13,13 @@ interface BotaoLinkProp {
 
 export function BotaoLink(prop: BotaoLinkProp) {
 
+    const stylePoint = prop.desabilitar ? "none" : "auto"
+
     return (
-        <Link role={prop.role} href={prop.href} aria-disabled={prop.desabilitar} className={`${prop.cssLink}`}>
-            <div className={`${CSS_BASICO} ${prop.css} ${prop.desabilitar ? "opacity-40" : ""}`}>
+        <Link role={prop.role} href={prop.href}
+            aria-disabled={prop.desabilitar} style={{ pointerEvents: stylePoint }}
+            className={`${prop.cssLink}`} >
+            <div className={`${CSS_BASICO} ${prop.css} ${prop.desabilitar ? "line-through" : ""}`}>
                 {prop.titulo}
             </div>
         </Link>
@@ -35,7 +39,7 @@ export function Botao(prop: BotaoProp) {
 
     return (
         <button role={prop.role} className="w-full" onClick={prop.onClick} disabled={prop.desabilitar}>
-            <div className={`${CSS_BASICO} ${prop.css} ${prop.desabilitar ? "opacity-40" : ""}`}>
+            <div className={`${CSS_BASICO} ${prop.css} ${prop.desabilitar ? "line-through" : ""}`}>
                 {prop.titulo}
             </div>
         </button>
