@@ -146,6 +146,7 @@ export default function Home() {
                             <div className="text-regular-label">PWA</div>
                             <div className="text-regular-label">Jest</div>
                             <div className="text-regular-label">Playwright</div>
+                            <div className="text-regular-label">Git Actions</div>
                         </div>
 
                         <div className="w-full content-end">

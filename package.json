@@ -1,10 +1,10 @@
 {
   "name": "decmercado",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm run test && npm run e2e && next build",
     "start": "next start",
     "lint": "next lint",
     "test": "jest",

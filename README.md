@@ -6,7 +6,7 @@ Este é um aplicativo desenvolvido para auxiliar nas compras do mercado, proporc
 
 - **Meu carrinho:** Importe uma ou mais listas criadas para realizar a sua compra com mais organização e controle.
 - **Minhas listas:** Crie listas e adicione, remova e/ou edite produtos de forma fácil e rápida.
-- **Minhas receitas (Não Finalizado):** Crie receitas adicionando os produtos necessarios para uma receita e depois importe os produtos para dentro de suas listas quando quiser.
+- **Minhas receitas (Não Finalizado):** Crie receitas adicionando os produtos necessários para uma receita e depois importe os produtos para dentro de suas listas quando quiser.
 - **Layout Responsivo:** O aplicativo é otimizado para dispositivos móveis, garantindo uma experiência consistente em diferentes tamanhos de tela. (somente para mobile, no desktop não está)
 
 ## Tecnologias Utilizadas
@@ -15,6 +15,7 @@ Este é um aplicativo desenvolvido para auxiliar nas compras do mercado, proporc
 - **Tailwind CSS:** Biblioteca de estilos utilitários para construção de interfaces responsivas de forma rápida.
 - **PWA (Progressive Web App):** O aplicativo é uma PWA, o que significa que pode ser instalado no dispositivo e acessado como um aplicativo nativo.
 - **Jest e Playwright:** Utilizados para testes automatizados, garantindo a qualidade do código e a estabilidade do aplicativo.
+- **Git Actions** Utilizado para deploy automatizado na vercel
 
 ## Demonstração
 
@@ -47,4 +48,4 @@ Esse é um projeto desenvolvido com dedicação para demonstrar habilidades em d
 
 ## Responsividade
 
-O aplicativo é para ser usado em dispositivos móveis, ou seja, no navegador desktop ele esta limitado.
+O aplicativo é para ser usado em dispositivos móveis, ou seja, no desktop ele está limitado.
