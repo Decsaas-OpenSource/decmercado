@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Aplicativo Decmercado
 
-## Getting Started
+Este é um aplicativo desenvolvido para auxiliar nas compras do mercado, proporcionando uma experiência simples e intuitiva para o usuário. Ele foi desenvolvido utilizando tecnologias modernas e práticas, visando demonstrar minhas habilidades de desenvolvedor frontend.
 
-First, run the development server:
+## Funcionalidades Principais
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Meu carrinho:** Importe uma ou mais listas criadas para realizar a sua compra com mais organização e controle.
+- **Minhas listas:** Crie listas e adicione, remova e/ou edite produtos de forma fácil e rápida.
+- **Minhas receitas (Não Finalizado):** Crie receitas adicionando os produtos necessarios para uma receita e depois importe os produtos para dentro de suas listas quando quiser.
+- **Layout Responsivo:** O aplicativo é otimizado para dispositivos móveis, garantindo uma experiência consistente em diferentes tamanhos de tela. (somente para mobile, no desktop não está)
+
+## Tecnologias Utilizadas
+
+- **Next.js:** Framework de React para desenvolvimento web moderno.
+- **Tailwind CSS:** Biblioteca de estilos utilitários para construção de interfaces responsivas de forma rápida.
+- **PWA (Progressive Web App):** O aplicativo é uma PWA, o que significa que pode ser instalado no dispositivo e acessado como um aplicativo nativo.
+- **Jest e Playwright:** Utilizados para testes automatizados, garantindo a qualidade do código e a estabilidade do aplicativo.
+
+## Demonstração
+
+Para visualizar o aplicativo em ação, acesse [esse link](https://decsaas-decmercado.vercel.app/app/home/) . Você também pode clonar este repositório e executar o aplicativo localmente seguindo as instruções abaixo.
+
+## Instalação e Uso
+
+1. Clone este repositório em sua máquina local:
+```
+git clone git@github.com:Decsaas-OpenSource/decmercado.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Instale as dependências do projeto:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+cd nome-do-repositorio
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+3. Execute o aplicativo localmente:
+```
+npm run dev
+```
 
-## Learn More
+4. Acesse o aplicativo em seu navegador, em [http://localhost:3000/app/home](http://localhost:3000/app/home).
 
-To learn more about Next.js, take a look at the following resources:
+## Objetivo
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Esse é um projeto desenvolvido com dedicação para demonstrar habilidades em desenvolvimento frontend. Espero que seja útil e inspirador para outros desenvolvedores!
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Responsividade
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+O aplicativo é para ser usado em dispositivos móveis, ou seja, no navegador desktop ele esta limitado.
