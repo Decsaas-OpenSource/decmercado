@@ -1,17 +1,24 @@
-name: Deploy app na Vercel
+name: Deploy do app na Vercel
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 on:
-  push:
-    tags:
-      - '*'
+  repository_dispatch:
+    types: [run-deploy]
       
 jobs:
   Deploy-Production:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Instalacao
+        run: npm install
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+      - name: Executa teste unitario
+        run: npm run test
+      - name: Executa teste e2e
+        run: npm run e2e
       - name: Install Vercel CLI
         run: npm install --global vercel@34.1.14
       - name: Pull Vercel Environment Information
