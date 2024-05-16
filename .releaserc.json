@@ -1,44 +1,59 @@
 {
-    "branches": [
-      "main"
+  "branches": [
+    "main"
+  ],
+  "plugins": [
+    [
+      "@semantic-release/commit-analyzer",
+      {
+        "releaseRules": [
+          {
+            "type": "feat",
+            "release": "minor"
+          },
+          {
+            "type": "fix",
+            "release": "patch"
+          }
+        ],
+        "preset": "conventionalcommits"
+      }
     ],
-    "ci": true,
-    "plugins": [
-      [
-        "@semantic-release/commit-analyzer",
-        {
-          "preset": "conventionalcommits"
-        }
-      ],
-      [
-        "@semantic-release/release-notes-generator",
-        {
-          "preset": "conventionalcommits"
-        }
-      ],
-      [
-        "@semantic-release/github",
-        {
-          "successComment": "This ${issue.pull_request ? 'PR is included' : 'issue has been resolved'} in version ${nextRelease.version} :tada:",
-          "labels": false,
-          "releasedLabels": false
-        }
-      ],
-      [
-        "@semantic-release/changelog",
-        {
-          "changelogFile": "CHANGELOG.md",
-          "changelogTitle": "# Changelog\n\nAll notable changes to this project will be documented in this file."
-        }
-      ],
-      [
-        "@semantic-release/git",
-        {
-          "assets": [
-            "CHANGELOG.md"
-          ],
-          "message": "chore(release): version ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
-        }
-      ]
+    [
+      "@semantic-release/changelog",
+      {
+        "changelogFile": "CHANGELOG.md",
+        "changelogTitle": "# Lista de alterações\n\nEssas são as novidades dessa versão"
+      }
+    ],
+    [
+      "@semantic-release/npm",
+      {
+        "npmPublish": false
+      }
+    ],
+    [
+      "@semantic-release/git",
+      {
+        "assets": [
+          "CHANGELOG.md", "package.json"
+        ],
+        "message": "Versão <%= nextRelease.version %> - <%= new Date().toLocaleDateString('pt-BR', {year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', timeZone: \"America/Sao_Paulo\" }) %> \n\n${nextRelease.notes}"
+      }
+    ],
+    [
+      "@semantic-release/github",
+      {
+        "successComment": "This ${issue.pull_request ? 'PR is included' : 'issue has been resolved'} in version ${nextRelease.version} :tada:",
+        "labels": false,
+        "releasedLabels": false
+      }
+    ],
+    [
+      "@semantic-release/release-notes-generator",
+      {
+        "preset": "conventionalcommits"
+      }
     ]
-  }
+  ]
+}
