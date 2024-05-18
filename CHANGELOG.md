@@ -2,6 +2,13 @@
 
 Essas são as novidades dessa versão
 
+## [1.0.2](https://github.com/Decsaas-OpenSource/decmercado/compare/v1.0.1...v1.0.2) (2024-05-18)
+
+
+### Bug Fixes
+
+* removido zoom em input ([e84fa37](https://github.com/Decsaas-OpenSource/decmercado/commit/e84fa37304ad94eed523e3dceacb7b275f848f83))
+
 ## [1.0.1](https://github.com/Decsaas-OpenSource/decmercado/compare/v1.0.0...v1.0.1) (2024-05-16)
 
 
