@@ -2,6 +2,13 @@
 
 Essas são as novidades dessa versão
 
+## [1.0.3](https://github.com/Decsaas-OpenSource/decmercado/compare/v1.0.2...v1.0.3) (2024-06-25)
+
+
+### Bug Fixes
+
+* atualizacao de dependencias ([882ba91](https://github.com/Decsaas-OpenSource/decmercado/commit/882ba91d1bf523b239092834ecfad18268b81c90))
+
 ## [1.0.2](https://github.com/Decsaas-OpenSource/decmercado/compare/v1.0.1...v1.0.2) (2024-05-18)
 
 
